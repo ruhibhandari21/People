@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FigureYourLead</string>
+    <string name="mobileno">Mobile No.</string>
+    <string name="otp">OTP</string>
+</resources>

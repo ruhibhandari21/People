@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:elevation="2dp"
+        android:background="@color/colorHeader"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:text="Login"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <RelativeLayout
+        android:background="#EEEEEE"
+        android:layout_below="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:padding="5dp"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:background="#333333"
+            android:text="Copyright 2018"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:elevation="2dp"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:layout_margin="30dp"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+            <TextView
+                android:id="@+id/tv_kyc"
+                android:layout_width="match_parent"
+                android:layout_margin="30dp"
+                android:text="Enter KYC Details"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="2"
+                    android:text="@string/mobileno" />
+
+                <EditText
+                    android:singleLine="true"
+                    android:id="@+id/edt_terminal_id"
+                    style="@style/EditTextStyle"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:minLines="2"
+                    android:inputType="phone"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="2"
+                    android:text="@string/otp" />
+
+                <EditText
+                    android:id="@+id/edt_otp"
+                    style="@style/EditTextStyle"
+                    android:layout_height="40dp"
+                    android:singleLine="true"
+
+                    android:layout_marginLeft="20dp"
+                    android:minLines="2"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <CheckBox
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="30dp"
+                android:id="@+id/chk_vise"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_gravity="center|left"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
+                android:text="Terms And Conditions" />
+
+            <Button
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_border"
+                android:text="LOGIN"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
