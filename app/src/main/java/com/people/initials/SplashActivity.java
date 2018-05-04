@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         new CountDownTimer(2000, 1000) {
             public void onFinish() {
 
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SplashActivity.this, RoleSelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
