@@ -15,9 +15,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DashboardActivity" />
-        <activity android:name=".initials.LoginActivity" />
-        <activity android:name=".initials.RoleSelectionActivity"></activity>
+        <activity android:name=".DashboardActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".initials.LoginActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".initials.RoleSelectionActivity"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>
