@@ -14,7 +14,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.quagnitia.posmate.R;
+
+import com.people.R;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

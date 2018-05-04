@@ -11,25 +11,32 @@
         android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="130dp"
         android:layout_centerInParent="true"
         android:text="Who are you?"
         android:textColor="@color/colorWhite"
-        android:textSize="25sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         />
 
+<RelativeLayout
+    android:layout_centerInParent="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
 
     <TextView
-        android:layout_below="@+id/tv_title"
+
         android:id="@+id/tv_voter"
-        android:layout_marginTop="50dp"
+
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:background="@color/colorWhite"
         android:textStyle="bold"
         android:text="Voter"
+        android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:textColor="@color/colorPrimary"
@@ -44,7 +51,7 @@
         android:layout_marginTop="30dp"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:text="Leader"
         android:gravity="center"
@@ -52,7 +59,7 @@
         />
 
 
-
+</RelativeLayout>
 
 
 
