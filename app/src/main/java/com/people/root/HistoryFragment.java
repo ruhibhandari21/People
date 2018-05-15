@@ -3,6 +3,8 @@ package com.people.root;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.people.R;
+import com.people.adapters.HistoryAdapter;
 
 /**
  * Created by admin on 5/15/2018.
@@ -27,6 +30,7 @@ public class HistoryFragment  extends Fragment implements View.OnClickListener {
     private EditText edt_title, edt_description;
     private Button btn_back, btn_publish, btn_attach_file;
     private RecyclerView recycler_view;
+    private HistoryAdapter historyAdapter;
 
     public HistoryFragment() {
         // Required empty public constructor
@@ -65,6 +69,11 @@ public class HistoryFragment  extends Fragment implements View.OnClickListener {
     public void initUI()
     {
         recycler_view=(RecyclerView)view.findViewById(R.id.recycler_view);
+        historyAdapter = new HistoryAdapter();
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mContext);
+        recycler_view.setLayoutManager(mLayoutManager);
+        recycler_view.setItemAnimator(new DefaultItemAnimator());
+        recycler_view.setAdapter(historyAdapter);
     }
 
     public void initListener()

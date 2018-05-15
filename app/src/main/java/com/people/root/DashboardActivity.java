@@ -114,7 +114,6 @@ floatingActionButton.setOnClickListener(this);
 
         } else if (id == R.id.nav_history) {
             callSetupFragment(SCREENS.HISTORY,null);
-
         } else if (id == R.id.nav_support) {
 
         } else if (id == R.id.nav_share) {
