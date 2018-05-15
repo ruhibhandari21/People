@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dimension10dp"
+    >
+
+    <ImageView
+        android:id="@+id/imgPost"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimension150dp"
+        android:src="@drawable/rf"
+        android:scaleType="centerCrop"
+        />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgPost"
+        android:maxLines="2"
+        android:textStyle="italic"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:layout_marginTop="@dimen/dimension4dp"
+        android:text="Lack of adequately trained #teachers is a factor in poor attendance and learning outcomes = barriers to achieving #Education2030 http://uis.unesco.org/en/topic/teachersTeacherAppreciationDay"
+        />
+
+    <TextView
+        android:id="@+id/more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDesc"
+        android:layout_alignParentRight="true"
+        android:text="More"
+        android:textColor="@color/colorPrimary"
+        />
+
+</RelativeLayout>
