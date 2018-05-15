@@ -85,7 +85,7 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
             case R.id.tv_statistics:
                 break;
             case R.id.btn_back:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,"Request");
+                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.HOME,null);
                 break;
         }
     }
