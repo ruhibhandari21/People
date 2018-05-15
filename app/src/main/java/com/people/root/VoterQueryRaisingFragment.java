@@ -47,13 +47,16 @@ public class VoterQueryRaisingFragment extends Fragment implements View.OnClickL
 
         switch (v.getId()) {
             case R.id.tv_request:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,null);
+                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,"Request");
                 break;
             case R.id.tv_complaint:
+                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,"Complaint");
                 break;
             case R.id.tv_suggestion:
+                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,"Suggestion");
                 break;
             case R.id.tv_feedback:
+                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,"Feedback");
                 break;
             case R.id.btn_back:
                 ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.PUSHUPDATES,null);
@@ -92,6 +95,7 @@ public class VoterQueryRaisingFragment extends Fragment implements View.OnClickL
         tv_complaint.setTypeface(font);
         tv_suggestion.setTypeface(font);
         tv_feedback.setTypeface(font);
+        btn_back.setTypeface(font);
     }
 
 

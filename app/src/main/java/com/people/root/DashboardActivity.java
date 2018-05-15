@@ -138,7 +138,7 @@ floatingActionButton.setOnClickListener(this);
                 break;
 
             case REQUEST:
-                fragment = RequestFragment.newInstance("", "");
+                fragment = RequestFragment.newInstance(data.toString(), "");
                 CURRENTFRAGMENT = SCREENS.REQUEST.toString();
                 break;
             case VOTERQUERYRAISING:

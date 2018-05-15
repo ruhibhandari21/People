@@ -11,9 +11,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.people.R;
@@ -33,6 +33,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     private View view;
     private EditText edt_title, edt_description;
     private Button btn_back, btn_submit, btn_attach_file;
+    private TextView tv_title;
 
     public RequestFragment() {
         // Required empty public constructor
@@ -62,6 +63,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_request, container, false);
         mContext = getActivity();
+
         initUI();
         initListener();
         return view;
@@ -74,6 +76,8 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
         btn_attach_file = (Button) view.findViewById(R.id.btn_attach_file);
         btn_back = (Button) view.findViewById(R.id.btn_back);
         btn_submit = (Button) view.findViewById(R.id.btn_submit);
+        tv_title=(TextView)view.findViewById(R.id.tv_title);
+        tv_title.setText(mParam1);
     }
 
     public void initListener() {
@@ -88,7 +92,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:
-                Toast.makeText(mContext, "Under Implementation", Toast.LENGTH_SHORT).show();
+                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.VOTERQUERYRAISING,null);
                 break;
             case R.id.btn_submit:
                 Toast.makeText(mContext, "Under Implementation", Toast.LENGTH_SHORT).show();
