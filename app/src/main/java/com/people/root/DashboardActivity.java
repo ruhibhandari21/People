@@ -113,6 +113,7 @@ floatingActionButton.setOnClickListener(this);
         } else if (id == R.id.nav_search) {
 
         } else if (id == R.id.nav_history) {
+            callSetupFragment(SCREENS.HISTORY,null);
 
         } else if (id == R.id.nav_support) {
 
@@ -145,6 +146,10 @@ floatingActionButton.setOnClickListener(this);
                 fragment = VoterQueryRaisingFragment.newInstance("", "");
                 CURRENTFRAGMENT = SCREENS.VOTERQUERYRAISING.toString();
                 break;
+            case HISTORY:
+                fragment = HistoryFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.HISTORY.toString();
+                break;
 
 
         }
@@ -164,7 +169,7 @@ floatingActionButton.setOnClickListener(this);
 
 
     public enum SCREENS {
-        PUSHUPDATES,REQUEST,VOTERQUERYRAISING
+        PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY
     }
 
 
