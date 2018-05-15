@@ -1,0 +1,85 @@
+package com.people;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.people.adapters.ToDoAdapter;
+import com.people.root.DashboardActivity;
+
+/**
+ * Created by admin on 5/15/2018.
+ */
+
+public class TodoFragment  extends Fragment implements View.OnClickListener {
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    private String mParam1;
+    private String mParam2;
+    private Context mContext;
+    private View view;
+    private RecyclerView recycler_view;
+    private ToDoAdapter historyAdapter;
+
+    public TodoFragment() {
+        // Required empty public constructor
+    }
+
+    public static TodoFragment newInstance(String param1, String param2) {
+        TodoFragment fragment = new TodoFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_history, container, false);
+        mContext = getActivity();
+        initUI();
+        initListener();
+        return view;
+    }
+
+
+    public void initUI()
+    {
+        ((DashboardActivity) mContext).floatingActionButton.setVisibility(View.GONE);
+        recycler_view=(RecyclerView)view.findViewById(R.id.recycler_view);
+        historyAdapter = new ToDoAdapter(mContext);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mContext);
+        recycler_view.setLayoutManager(mLayoutManager);
+        recycler_view.setItemAnimator(new DefaultItemAnimator());
+        recycler_view.setAdapter(historyAdapter);
+    }
+
+    public void initListener()
+    {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+}

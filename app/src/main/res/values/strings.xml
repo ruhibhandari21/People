@@ -37,6 +37,12 @@
     </string-array>
 
 
+    <string-array name="district_arr">
+        <item>Pune</item>
+        <item>Solapur</item>
+        <item>Mumbai</item>
+    </string-array>
+
     <string-array name="people_arr">
         <item>Ruhi Bhandari</item>
         <item>Shadaf Shaikh</item>

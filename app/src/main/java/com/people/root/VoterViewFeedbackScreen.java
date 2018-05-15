@@ -4,22 +4,19 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.people.R;
-import com.people.adapters.HistoryAdapter;
 
 /**
  * Created by admin on 5/15/2018.
  */
 
-public class VoterViewFeedbackScreen   extends Fragment implements View.OnClickListener {
+public class VoterViewFeedbackScreen extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -54,28 +51,25 @@ public class VoterViewFeedbackScreen   extends Fragment implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-switch (v.getId())
-{
-    case R.id.btn_back:
-        ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.HISTORY,null);
-        break;
-}
+        switch (v.getId()) {
+            case R.id.btn_back:
+                ((DashboardActivity) mContext).callSetupFragment(DashboardActivity.SCREENS.HISTORY, null);
+                break;
+        }
     }
 
-    public void initUI()
-    {
+    public void initUI() {
         ((DashboardActivity) mContext).floatingActionButton.setVisibility(View.GONE);
         Typeface font = Typeface.createFromAsset(mContext.getAssets(), "Caviar_Dreams_Bold.ttf");
-        tv_feedback=(TextView)view.findViewById(R.id.tv_feedback);
-        btn_back=(Button) view.findViewById(R.id.btn_back);
-        tv_title=(TextView)view.findViewById(R.id.tv_title);
+        tv_feedback = (TextView) view.findViewById(R.id.tv_feedback);
+        btn_back = (Button) view.findViewById(R.id.btn_back);
+        tv_title = (TextView) view.findViewById(R.id.tv_title);
         tv_feedback.setTypeface(font);
         tv_title.setTypeface(font);
         btn_back.setTypeface(font);
     }
 
-    public void initListener()
-    {
+    public void initListener() {
         btn_back.setOnClickListener(this);
     }
 

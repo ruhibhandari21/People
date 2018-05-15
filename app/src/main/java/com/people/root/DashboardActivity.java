@@ -1,6 +1,7 @@
 package com.people.root;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -18,6 +19,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.people.R;
+import com.people.TodoFragment;
+import com.people.initials.ProfileActivity;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,View.OnClickListener{
@@ -67,6 +70,12 @@ public class DashboardActivity extends AppCompatActivity
 
     public void initListener() {
 floatingActionButton.setOnClickListener(this);
+        ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.imageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
+            }
+        });
     }
 
 
@@ -77,10 +86,10 @@ floatingActionButton.setOnClickListener(this);
             drawer.closeDrawer(GravityCompat.START);
         } else {
 
-            if(getFragmentManager().getBackStackEntryCount() > 1){
-                getFragmentManager().popBackStack();
-            }else{
+            if(getSupportFragmentManager().getBackStackEntryCount() > 1){
                 super.onBackPressed();
+            }else{
+                finish();
             }
 
 
@@ -123,11 +132,22 @@ floatingActionButton.setOnClickListener(this);
         } else if (id == R.id.nav_history) {
             callSetupFragment(SCREENS.HISTORY,null);
         } else if (id == R.id.nav_support) {
-
+            callSetupFragment(SCREENS.FEEDBACK,null);
         } else if (id == R.id.nav_share) {
-
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "this will be a link to download the app from the google play store";
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share app download link");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            startActivity(Intent.createChooser(sharingIntent, "Share via"));
         } else if (id == R.id.nav_about) {
 
+        }
+        else if (id == R.id.nav_todo) {
+            callSetupFragment(SCREENS.VOTERQUERYRAISING,"todo");
+        }
+        else if (id == R.id.nav_push) {
+            callSetupFragment(DashboardActivity.SCREENS.PUSHUPDATES,null);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -138,7 +158,7 @@ floatingActionButton.setOnClickListener(this);
     public void callSetupFragment(SCREENS screens, Object data) {
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-
+        if(data == null) data = "";
         switch (screens) {
             case PUSHUPDATES:
                 fragment = PushUpdatesFragment.newInstance("", "");
@@ -150,7 +170,7 @@ floatingActionButton.setOnClickListener(this);
                 CURRENTFRAGMENT = SCREENS.REQUEST.toString();
                 break;
             case VOTERQUERYRAISING:
-                fragment = VoterQueryRaisingFragment.newInstance("", "");
+                fragment = VoterQueryRaisingFragment.newInstance(data.toString(), "");
                 CURRENTFRAGMENT = SCREENS.VOTERQUERYRAISING.toString();
                 break;
             case HISTORY:
@@ -159,7 +179,7 @@ floatingActionButton.setOnClickListener(this);
                 break;
 
             case VOTERVIEWFEEDBACK:
-                fragment = VoterViewFeedbackScreen.newInstance("", "");
+                fragment = VoterViewFeedbackScreen.newInstance(data.toString(), "");
                 CURRENTFRAGMENT = SCREENS.VOTERVIEWFEEDBACK.toString();
                 break;
 
@@ -173,11 +193,22 @@ floatingActionButton.setOnClickListener(this);
                 CURRENTFRAGMENT = SCREENS.HOME.toString();
                 break;
 
+            case TODO:
+                fragment = TodoFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.TODO.toString();
+                break;
+
+            case FEEDBACK:
+                fragment = BlankFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.FEEDBACK.toString();
+                break;
+
 
         }
+
         fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
         fragmentTransaction.addToBackStack(CURRENTFRAGMENT);
-        fragmentTransaction.commitAllowingStateLoss();
+        fragmentTransaction.commit();//AllowingStateLoss();
     }
 
     @Override
@@ -192,7 +223,7 @@ floatingActionButton.setOnClickListener(this);
 
 
     public enum SCREENS {
-        HOME,PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK,VOTERSEARCH
+        HOME,PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK,VOTERSEARCH, TODO, FEEDBACK
     }
 
 

@@ -1,15 +1,16 @@
 package com.people.root;
 
+import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.people.R;
 
@@ -45,21 +46,31 @@ public class VoterQueryRaisingFragment extends Fragment implements View.OnClickL
     @Override
     public void onClick(View v) {
 
+        DashboardActivity.SCREENS screens = DashboardActivity.SCREENS.REQUEST;
+        if(!mParam1.equals("")){
+            screens = DashboardActivity.SCREENS.TODO;
+        }
         switch (v.getId()) {
             case R.id.tv_request:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,"Request");
+                ((DashboardActivity)mContext).callSetupFragment(screens,"Request");
                 break;
             case R.id.tv_complaint:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,"Complaint");
+                ((DashboardActivity)mContext).callSetupFragment(screens,"Complaint");
                 break;
             case R.id.tv_suggestion:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,"Suggestion");
+                ((DashboardActivity)mContext).callSetupFragment(screens,"Suggestion");
                 break;
             case R.id.tv_feedback:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,"Feedback");
+                ((DashboardActivity)mContext).callSetupFragment(screens,"Feedback");
                 break;
             case R.id.btn_back:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.PUSHUPDATES,null);
+                FragmentManager fragmentManager = ((DashboardActivity)mContext).getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                PostFragment fragment = PostFragment.newInstance("", "");
+                String  CURRENTFRAGMENT = DashboardActivity.SCREENS.HOME.toString();
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
+                fragmentTransaction.commitAllowingStateLoss();
                 break;
         }
     }
@@ -97,6 +108,13 @@ public class VoterQueryRaisingFragment extends Fragment implements View.OnClickL
         tv_suggestion.setTypeface(font);
         tv_feedback.setTypeface(font);
         btn_back.setTypeface(font);
+
+        if(!mParam1.equals("")){
+            tv_request.setText(tv_request.getText().toString()+"(3)");
+            tv_complaint.setText(tv_complaint.getText().toString()+"(2)");
+            tv_suggestion.setText(tv_suggestion.getText().toString()+"(0)");
+            tv_feedback.setText(tv_feedback.getText().toString()+"(5)");
+        }
     }
 
 
