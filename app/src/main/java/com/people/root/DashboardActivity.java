@@ -1,27 +1,47 @@
 package com.people.root;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.people.R;
 
+import java.util.HashMap;
+
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private Context mContext;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
+    private String CURRENTFRAGMENT = "";
+    private Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        mContext=this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -42,6 +62,10 @@ public class DashboardActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        callSetupFragment(SCREENS.PUSHUPDATES,null);
+
     }
 
     @Override
@@ -100,4 +124,28 @@ public class DashboardActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void callSetupFragment(SCREENS screens, Object data) {
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+
+        switch (screens) {
+            case PUSHUPDATES:
+                fragment = PushUpdatesFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.PUSHUPDATES.toString();
+                break;
+
+
+        }
+        fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
+
+
+    public enum SCREENS {
+        PUSHUPDATES
+    }
+
+
+
 }
