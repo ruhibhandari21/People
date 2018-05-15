@@ -20,7 +20,7 @@ import android.view.View;
 import com.people.R;
 
 public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener ,View.OnClickListener{
     private Context mContext;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
@@ -66,7 +66,7 @@ public class DashboardActivity extends AppCompatActivity
     }
 
     public void initListener() {
-
+floatingActionButton.setOnClickListener(this);
     }
 
 
@@ -141,6 +141,10 @@ public class DashboardActivity extends AppCompatActivity
                 fragment = RequestFragment.newInstance("", "");
                 CURRENTFRAGMENT = SCREENS.REQUEST.toString();
                 break;
+            case VOTERQUERYRAISING:
+                fragment = VoterQueryRaisingFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.VOTERQUERYRAISING.toString();
+                break;
 
 
         }
@@ -148,9 +152,19 @@ public class DashboardActivity extends AppCompatActivity
         fragmentTransaction.commitAllowingStateLoss();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.fab:
+                callSetupFragment(SCREENS.VOTERQUERYRAISING,null);
+                break;
+        }
+    }
+
 
     public enum SCREENS {
-        PUSHUPDATES,REQUEST
+        PUSHUPDATES,REQUEST,VOTERQUERYRAISING
     }
 
 

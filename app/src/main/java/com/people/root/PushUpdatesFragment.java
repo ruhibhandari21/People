@@ -68,7 +68,7 @@ public class PushUpdatesFragment extends Fragment implements View.OnClickListene
     }
 
     public void initUI() {
-        ((DashboardActivity) mContext).floatingActionButton.setVisibility(View.GONE);
+      //  ((DashboardActivity) mContext).floatingActionButton.setVisibility(View.GONE);
         edt_title = (EditText) view.findViewById(R.id.edt_title);
         edt_description = (EditText) view.findViewById(R.id.edt_description);
         btn_attach_file = (Button) view.findViewById(R.id.btn_attach_file);
