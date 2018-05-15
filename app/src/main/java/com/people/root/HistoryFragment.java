@@ -27,8 +27,6 @@ public class HistoryFragment  extends Fragment implements View.OnClickListener {
     private String mParam2;
     private Context mContext;
     private View view;
-    private EditText edt_title, edt_description;
-    private Button btn_back, btn_publish, btn_attach_file;
     private RecyclerView recycler_view;
     private HistoryAdapter historyAdapter;
 

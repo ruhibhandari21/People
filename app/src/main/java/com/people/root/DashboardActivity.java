@@ -112,7 +112,7 @@ floatingActionButton.setOnClickListener(this);
             callSetupFragment(SCREENS.PUSHUPDATES, null);
             // Handle the camera action
         } else if (id == R.id.nav_search) {
-
+            callSetupFragment(SCREENS.VOTERSEARCH, null);
         } else if (id == R.id.nav_history) {
             callSetupFragment(SCREENS.HISTORY,null);
         } else if (id == R.id.nav_support) {
@@ -156,6 +156,11 @@ floatingActionButton.setOnClickListener(this);
                 CURRENTFRAGMENT = SCREENS.VOTERVIEWFEEDBACK.toString();
                 break;
 
+            case VOTERSEARCH:
+                fragment = VoterSearchFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.VOTERSEARCH.toString();
+                break;
+
 
         }
         fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
@@ -174,7 +179,7 @@ floatingActionButton.setOnClickListener(this);
 
 
     public enum SCREENS {
-        PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK
+        PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK,VOTERSEARCH
     }
 
 
