@@ -85,6 +85,7 @@ public class VoterQueryRaisingFragment extends Fragment implements View.OnClickL
     }
 
     public void initUI() {
+        ((DashboardActivity) mContext).floatingActionButton.setVisibility(View.GONE);
         Typeface font = Typeface.createFromAsset(mContext.getAssets(), "Caviar_Dreams_Bold.ttf");
         tv_request = (Button) view.findViewById(R.id.tv_request);
         tv_complaint = (Button) view.findViewById(R.id.tv_complaint);

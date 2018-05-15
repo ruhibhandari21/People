@@ -68,8 +68,9 @@ public class HistoryFragment  extends Fragment implements View.OnClickListener {
 
     public void initUI()
     {
+        ((DashboardActivity) mContext).floatingActionButton.setVisibility(View.GONE);
         recycler_view=(RecyclerView)view.findViewById(R.id.recycler_view);
-        historyAdapter = new HistoryAdapter();
+        historyAdapter = new HistoryAdapter(mContext);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mContext);
         recycler_view.setLayoutManager(mLayoutManager);
         recycler_view.setItemAnimator(new DefaultItemAnimator());

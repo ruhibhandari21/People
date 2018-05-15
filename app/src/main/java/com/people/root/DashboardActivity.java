@@ -109,6 +109,7 @@ floatingActionButton.setOnClickListener(this);
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            callSetupFragment(SCREENS.PUSHUPDATES, null);
             // Handle the camera action
         } else if (id == R.id.nav_search) {
 

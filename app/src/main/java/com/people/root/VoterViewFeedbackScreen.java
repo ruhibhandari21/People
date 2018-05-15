@@ -64,12 +64,14 @@ switch (v.getId())
 
     public void initUI()
     {
+        ((DashboardActivity) mContext).floatingActionButton.setVisibility(View.GONE);
         Typeface font = Typeface.createFromAsset(mContext.getAssets(), "Caviar_Dreams_Bold.ttf");
         tv_feedback=(TextView)view.findViewById(R.id.tv_feedback);
         btn_back=(Button) view.findViewById(R.id.btn_back);
         tv_title=(TextView)view.findViewById(R.id.tv_title);
         tv_feedback.setTypeface(font);
         tv_title.setTypeface(font);
+        btn_back.setTypeface(font);
     }
 
     public void initListener()
