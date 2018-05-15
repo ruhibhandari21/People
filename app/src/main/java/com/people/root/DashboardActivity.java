@@ -178,6 +178,16 @@ floatingActionButton.setOnClickListener(this);
                 CURRENTFRAGMENT = SCREENS.REPORT.toString();
                 break;
 
+            case PIECHART:
+                fragment = BarChartFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.PIECHART.toString();
+                break;
+
+            case PRIORITIES:
+                fragment = PrioritiesFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.PRIORITIES.toString();
+                break;
+
 
         }
         fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
@@ -197,7 +207,7 @@ floatingActionButton.setOnClickListener(this);
 
 
     public enum SCREENS {
-        HOME,PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK,VOTERSEARCH,REPORT
+        HOME,PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK,VOTERSEARCH,REPORT,PIECHART,PRIORITIES
     }
 
 

@@ -71,6 +71,7 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
         btn_back=(Button)view.findViewById(R.id.btn_back);
         tv_statistics.setTypeface(font);
         tv_prorities.setTypeface(font);
+        btn_back.setTypeface(font);
     }
 
     public void initListener() {
@@ -83,12 +84,15 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_prorities:
+                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.PRIORITIES,null);
                 break;
             case R.id.tv_statistics:
+                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.PIECHART,null);
                 break;
             case R.id.btn_back:
                 ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.HOME,null);
                 break;
+
         }
     }
 }
