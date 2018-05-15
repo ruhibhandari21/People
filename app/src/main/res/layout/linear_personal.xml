@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimension50dp"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    android:paddingTop="@dimen/dimension5dp"
+    >
+
+    <FrameLayout
+        android:id="@+id/frameImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        >
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/relPersonal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2"
+        >
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Roger federer"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:layout_marginTop="@dimen/dimension5dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tvRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvName"
+            android:text="Minister"
+            android:textStyle="italic"
+            />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frameStar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        >
+
+        <ImageView
+            android:id="@+id/imgStar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            />
+
+    </FrameLayout>
+
+</LinearLayout>
