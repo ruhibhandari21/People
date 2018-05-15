@@ -150,6 +150,11 @@ floatingActionButton.setOnClickListener(this);
                 CURRENTFRAGMENT = SCREENS.HISTORY.toString();
                 break;
 
+            case VOTERVIEWFEEDBACK:
+                fragment = VoterViewFeedbackScreen.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.VOTERVIEWFEEDBACK.toString();
+                break;
+
 
         }
         fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
@@ -168,7 +173,7 @@ floatingActionButton.setOnClickListener(this);
 
 
     public enum SCREENS {
-        PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY
+        PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK
     }
 
 

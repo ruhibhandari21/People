@@ -1,5 +1,6 @@
 package com.people.adapters;
 
+import android.content.Context;
 import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.people.R;
+import com.people.root.DashboardActivity;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHolder> {
 
-
+private Context mContext;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, year, genre;
 
@@ -30,8 +32,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     }
 
 
-    public HistoryAdapter() {
+    public HistoryAdapter(Context mContext) {
 //        this.moviesList = moviesList;
+        this.mContext=mContext;
     }
 
     @Override
@@ -48,6 +51,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 //        holder.title.setText(movie.getTitle());
 //        holder.genre.setText(movie.getGenre());
 //        holder.year.setText(movie.getYear());
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.VOTERVIEWFEEDBACK,null);
+            }
+        });
     }
 
     @Override
