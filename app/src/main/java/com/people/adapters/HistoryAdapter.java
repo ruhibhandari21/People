@@ -21,19 +21,16 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
 private Context mContext;
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, year, genre;
+        public TextView title, tv_flag;
 
         public MyViewHolder(View view) {
             super(view);
-//            title = (TextView) view.findViewById(R.id.title);
-//            genre = (TextView) view.findViewById(R.id.genre);
-//            year = (TextView) view.findViewById(R.id.year);
+            tv_flag = (TextView) view.findViewById(R.id.tv_flag);
         }
     }
 
 
     public HistoryAdapter(Context mContext) {
-//        this.moviesList = moviesList;
         this.mContext=mContext;
     }
 
@@ -47,10 +44,24 @@ private Context mContext;
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-//        Movie movie = moviesList.get(position);
-//        holder.title.setText(movie.getTitle());
-//        holder.genre.setText(movie.getGenre());
-//        holder.year.setText(movie.getYear());
+
+        if(position%2==0)
+        {
+            holder.tv_flag.setText("Request");
+            holder.tv_flag.setTextColor(mContext.getResources().getColor(R.color.colorHeader));
+        }
+        else if(position==3)
+        {
+            holder.tv_flag.setText("Complaint");
+            holder.tv_flag.setTextColor(mContext.getResources().getColor(android.R.color.holo_red_dark));
+        }
+        else
+        {
+            holder.tv_flag.setText("Suggestion");
+            holder.tv_flag.setTextColor(mContext.getResources().getColor(android.R.color.holo_orange_dark));
+        }
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
