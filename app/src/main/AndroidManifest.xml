@@ -16,15 +16,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DashboardActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".initials.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".initials.RoleSelectionActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".initials.ProfileActivity"></activity>
+        <activity android:name=".initials.ProfileActivity" />
+        <activity
+            android:name=".root.DashboardActivity"
+            android:label="@string/title_activity_dashboard"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
