@@ -11,9 +11,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.people.R;
 import com.people.utils.AppConstants;
 
@@ -59,13 +61,14 @@ public class PushUpdatesFragment extends Fragment implements View.OnClickListene
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_push_updates, container, false);
-        mContext=getActivity();
+        mContext = getActivity();
         initUI();
         initListener();
         return view;
     }
 
     public void initUI() {
+        ((DashboardActivity) mContext).floatingActionButton.setVisibility(View.GONE);
         edt_title = (EditText) view.findViewById(R.id.edt_title);
         edt_description = (EditText) view.findViewById(R.id.edt_description);
         btn_attach_file = (Button) view.findViewById(R.id.btn_attach_file);
@@ -101,9 +104,9 @@ public class PushUpdatesFragment extends Fragment implements View.OnClickListene
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
-        switch(requestCode){
+        switch (requestCode) {
             case AppConstants.PICKFILE_RESULT_CODE:
-                if(resultCode==RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     String FilePath = data.getData().getPath();
                     Toast.makeText(mContext, FilePath, Toast.LENGTH_SHORT).show();
                     //textFile.setText(FilePath);
