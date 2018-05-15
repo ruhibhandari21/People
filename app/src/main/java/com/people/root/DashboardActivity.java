@@ -140,8 +140,8 @@ floatingActionButton.setOnClickListener(this);
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share app download link");
             sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));
-        } else if (id == R.id.nav_about) {
-
+        } else if (id == R.id.nav_report) {
+            callSetupFragment(SCREENS.REPORT,null);
         }
         else if (id == R.id.nav_todo) {
             callSetupFragment(SCREENS.VOTERQUERYRAISING,"todo");
@@ -203,6 +203,18 @@ floatingActionButton.setOnClickListener(this);
                 CURRENTFRAGMENT = SCREENS.FEEDBACK.toString();
                 break;
 
+            case REPORT:
+                fragment = ReportFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.REPORT.toString();
+                break;
+            case PRIORITIES:
+                fragment = PrioritiesFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.PRIORITIES.toString();
+                break;
+            case PIECHART:
+                fragment = BarChartFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.PIECHART.toString();
+                break;
 
         }
 
@@ -223,7 +235,7 @@ floatingActionButton.setOnClickListener(this);
 
 
     public enum SCREENS {
-        HOME,PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK,VOTERSEARCH, TODO, FEEDBACK
+        REPORT,PIECHART,PRIORITIES,HOME,PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK,VOTERSEARCH, TODO, FEEDBACK
     }
 
 

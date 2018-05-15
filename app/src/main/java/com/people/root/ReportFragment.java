@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,7 +92,13 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
                 ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.PIECHART,null);
                 break;
             case R.id.btn_back:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.HOME,null);
+                FragmentManager fragmentManager = ((DashboardActivity)mContext).getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                PostFragment fragment = PostFragment.newInstance("", "");
+                String  CURRENTFRAGMENT = DashboardActivity.SCREENS.HOME.toString();
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
+                fragmentTransaction.commitAllowingStateLoss();
                 break;
 
         }

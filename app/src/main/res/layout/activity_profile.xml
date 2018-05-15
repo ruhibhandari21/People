@@ -225,7 +225,7 @@
                 android:layout_marginBottom="@dimen/dimension10dp"
                 android:background="@drawable/btn_border"
                 android:gravity="center"
-                android:text="LOGIN"
+                android:text="SUBMIT"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp" />
 
