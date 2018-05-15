@@ -137,6 +137,11 @@ public class DashboardActivity extends AppCompatActivity
                 CURRENTFRAGMENT = SCREENS.PUSHUPDATES.toString();
                 break;
 
+            case REQUEST:
+                fragment = RequestFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.REQUEST.toString();
+                break;
+
 
         }
         fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
@@ -145,7 +150,7 @@ public class DashboardActivity extends AppCompatActivity
 
 
     public enum SCREENS {
-        PUSHUPDATES
+        PUSHUPDATES,REQUEST
     }
 
 

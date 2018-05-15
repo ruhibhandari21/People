@@ -91,6 +91,7 @@ public class PushUpdatesFragment extends Fragment implements View.OnClickListene
                 Toast.makeText(mContext, "Under Implementation", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_publish:
+                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REQUEST,null);
                 Toast.makeText(mContext, "Under Implementation", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_attach_file:
