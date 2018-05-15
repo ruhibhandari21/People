@@ -69,6 +69,8 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
         tv_prorities = (Button) view.findViewById(R.id.tv_prorities);
         tv_statistics = (Button) view.findViewById(R.id.tv_statistics);
         btn_back=(Button)view.findViewById(R.id.btn_back);
+        tv_statistics.setTypeface(font);
+        tv_prorities.setTypeface(font);
     }
 
     public void initListener() {

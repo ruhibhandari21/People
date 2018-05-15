@@ -127,7 +127,7 @@ floatingActionButton.setOnClickListener(this);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_about) {
-
+            callSetupFragment(SCREENS.REPORT, null);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
