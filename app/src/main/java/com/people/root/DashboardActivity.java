@@ -56,7 +56,7 @@ public class DashboardActivity extends AppCompatActivity
         initUI();
         initListener();
 
-        callSetupFragment(SCREENS.PUSHUPDATES, null);
+        callSetupFragment(SCREENS.HOME, null);
 
     }
 
@@ -76,7 +76,14 @@ floatingActionButton.setOnClickListener(this);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            if(getFragmentManager().getBackStackEntryCount() > 1){
+                getFragmentManager().popBackStack();
+            }else{
+                super.onBackPressed();
+            }
+
+
         }
     }
 
@@ -109,7 +116,7 @@ floatingActionButton.setOnClickListener(this);
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            callSetupFragment(SCREENS.PUSHUPDATES, null);
+            callSetupFragment(SCREENS.HOME, null);
             // Handle the camera action
         } else if (id == R.id.nav_search) {
             callSetupFragment(SCREENS.VOTERSEARCH, null);
@@ -161,9 +168,15 @@ floatingActionButton.setOnClickListener(this);
                 CURRENTFRAGMENT = SCREENS.VOTERSEARCH.toString();
                 break;
 
+            case HOME:
+                fragment = PostFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.HOME.toString();
+                break;
+
 
         }
         fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
+        fragmentTransaction.addToBackStack(CURRENTFRAGMENT);
         fragmentTransaction.commitAllowingStateLoss();
     }
 
@@ -179,8 +192,9 @@ floatingActionButton.setOnClickListener(this);
 
 
     public enum SCREENS {
-        PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK,VOTERSEARCH
+        HOME,PUSHUPDATES,REQUEST,VOTERQUERYRAISING,HISTORY,VOTERVIEWFEEDBACK,VOTERSEARCH
     }
+
 
 
 }
