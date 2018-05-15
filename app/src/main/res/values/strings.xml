@@ -36,6 +36,22 @@
 
     </string-array>
 
+
+    <string-array name="people_arr">
+        <item>Ruhi Bhandari</item>
+        <item>Shadaf Shaikh</item>
+        <item>Balaji</item>
+        <item>Chetan Yabaji</item>
+        <item>Harsh</item>
+        <item>Avinash</item>
+        <item>Ayesha</item>
+
+
+    </string-array>
+
+
+
+
     <string-array name="language_arr">
         <item>English</item>
         <item>Hindi</item>

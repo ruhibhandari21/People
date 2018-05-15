@@ -40,7 +40,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:textSize="16sp"
-            android:entries="@array/state_arr"
+            android:entries="@array/people_arr"
             ></Spinner>
 
 

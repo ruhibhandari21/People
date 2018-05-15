@@ -60,7 +60,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_push_updates, container, false);
+        view = inflater.inflate(R.layout.fragment_request, container, false);
         mContext = getActivity();
         initUI();
         initListener();
