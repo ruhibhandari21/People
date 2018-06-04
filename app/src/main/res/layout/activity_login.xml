@@ -73,7 +73,6 @@
                     android:text="@string/mobile_no" />
 
                 <EditText
-                    android:singleLine="true"
                     android:id="@+id/edt_terminal_id"
                     style="@style/EditTextStyle"
                     android:layout_height="40dp"
@@ -82,6 +81,8 @@
                     android:inputType="phone"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
+                    android:maxLength="10"
+                    android:imeOptions="actionDone"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -104,8 +105,9 @@
                     android:id="@+id/edt_otp"
                     style="@style/EditTextStyle"
                     android:layout_height="40dp"
-                    android:singleLine="true"
-
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:imeOptions="actionDone"
                     android:layout_marginLeft="20dp"
                     android:minLines="2"
                     android:layout_marginRight="20dp"

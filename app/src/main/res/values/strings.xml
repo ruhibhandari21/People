@@ -92,7 +92,7 @@
     <string name="select_district">Select district</string>
     <string name="taluka">Taluka</string>
     <string name="city">City/Village</string>
-    <string name="postal_code">Postal code*</string>
+    <string name="postal_code">Postal code</string>
     <string name="select_lang">Select language</string>
     <string name="submit">SUBMIT</string>
 

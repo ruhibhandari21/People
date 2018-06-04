@@ -1,0 +1,146 @@
+<resources>
+
+    <string name="app_name">FigureYourLead</string>
+
+    //Other titles
+    <string name="title_activity_dashboard">Home</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">सेटिंग्स</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //menu
+    <string name="home_menu">होम</string>
+    <string name="search_menu">खोज करें</string>
+    <string name="history_menu">इतिहास</string>
+    <string name="todo_menu">टू-डु</string>
+    <string name="push_updates_menu">स्थिति प्रकाशित करें</string>
+    <string name="report_menu">रिपोर्ट</string>
+    <string name="other_menu">और</string>
+    <string name="support_menu">समर्थन</string>
+    <string name="about_menu">हमारे बारे में</string>
+    <string name="share_app_menu">शेयर अप्प</string>
+
+
+    //Login
+    <string name="login">लॉग इन करें</string>
+    <string name="kyc_title">दर्ज केवाईसी जानकारी</string>
+    <string name="mobile_no">मोबाइल नं.</string>
+    <string name="terms_condition">नियम और शर्तें</string>
+    <string name="send_otp">ओटीपी भेजें</string>
+    <string name="copyright">कॉपीराइट 2018</string>
+    <string name="otp">ओटीपी</string>
+
+    //Profile
+    <string-array name="state_arr">
+        <item>आंध्र प्रदेश</item>
+        <item>अरुणाचल प्रदेश</item>
+        <item>असम</item>
+        <item>बिहार</item>
+        <item>छत्तीसगढ़</item>
+        <item>गोवा</item>
+        <item>गुजरात</item>
+        <item>हरयाणा</item>
+        <item>हिमाचल प्रदेश</item>
+        <item>जम्मू-कश्मीर</item>
+        <item>झारखंड</item>
+        <item>कर्नाटक</item>
+        <item>केरल</item>
+        <item>मध्य प्रदेश</item>
+        <item>महाराष्ट्र</item>
+        <item>मणिपुर</item>
+        <item>मेघालय</item>
+        <item>मिजोरम</item>
+        <item>नगालैंड</item>
+        <item>ओडिशा</item>
+        <item>पंजाब</item>
+        <item>राजस्थान</item>
+        <item>सिक्किम</item>
+        <item>तमिलनाडु</item>
+        <item>त्रिपुरा</item>
+        <item>उत्तरांचल</item>
+        <item>उत्तर प्रदेश</item>
+        <item>पश्चिम बंगाल</item>
+
+    </string-array>
+    <string-array name="district_arr">
+        <item>पुणे</item>
+        <item>सोलापुर</item>
+        <item>मुंबई</item>
+    </string-array>
+    <string-array name="people_arr">
+        <item>Ruhi Bhandari</item>
+        <item>Shadaf Shaikh</item>
+        <item>Balaji</item>
+        <item>Chetan Yabaji</item>
+        <item>Harsh</item>
+        <item>Avinash</item>
+        <item>Ayesha</item>
+
+
+    </string-array>
+    <string-array name="language_arr">
+        <item>English</item>
+        <item>हिंदी</item>
+    </string-array>
+    <string name="profile">प्रोफाइल</string>
+    <string name="first_name">पहला नाम*</string>
+    <string name="last_name">अंतिम नाम*</string>
+    <string name="select_state">राज्य चुनें</string>
+    <string name="select_district">जिला का चयन करें</string>
+    <string name="taluka">तालुका</string>
+    <string name="city">शहर/गाँव</string>
+    <string name="postal_code">डाक कोड</string>
+    <string name="select_lang">भाषा चुनिए</string>
+    <string name="submit">जमा करें</string>
+
+    //Role screen
+    <string name="who_are_u">आप कौन हैं?</string>
+    <string name="voter">मतदाता</string>
+    <string name="leader">नेता</string>
+
+    //Pie-chart screen(reports)
+    <string name="back">पीछे</string>
+    <string name="total_qry">कुल प्रश्न - 200</string>
+
+    //Feedback
+    <string name="feedback_details">हमारी सेवाओं का उपयोग करने के लिए धन्यवाद।.\nहमें उम्मीद है कि आप इससे लाभ प्राप्त कर रहे हैं।\n\nकृपया हमें अपनी तरह की प्रतिक्रिया दें।</string>
+    <string name="feedback_comment">यहां प्रतिक्रिया जोड़ें...</string>
+    <string name="submit_feedback">प्रतिपुष्टि दें</string>
+
+    //Priorities screen
+    <string name="share">शेयर</string>
+
+    //Push updates
+    <string name="title">शीर्षक</string>
+    <string name="description">वर्णन</string>
+    <string name="attach_file">फ़ाइल जोड़ें</string>
+    <string name="publish">प्रकाशित करना</string>
+
+    //Reports
+    <string name="statistics">आंकड़े</string>
+    <string name="priorities">प्राथमिकताएं</string>
+
+    //Request
+    <string name="request">निवेदन</string>
+    <string name="to">प्रति</string>
+
+    //Query option screen
+    <string name="complaint">शिकायत</string>
+    <string name="suggestion">सुझाव</string>
+    <string name="feedback">प्रतिक्रिया</string>
+
+    //Search screen
+    <string name="enter_name">नाम दर्ज करें</string>
+    <string name="search_lead">अपने नेता को खोजें</string>
+
+    //voter_feedback
+    <string name="cancel">रद्द करें</string>
+    <string name="retry">पुन: प्रयास करें</string>
+
+    //post_layout
+    <string name="more">अधिक</string>
+
+</resources>

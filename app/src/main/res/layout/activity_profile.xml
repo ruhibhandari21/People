@@ -51,7 +51,7 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:id="@+id/tv_kyc"
+                    android:id="@+id/profilePic"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center|top"
@@ -78,7 +78,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimension10dp"
-                android:padding="@dimen/dimension2dp">
+                android:paddingLeft="@dimen/dimension10dp"
+                android:paddingRight="@dimen/dimension10dp"
+                >
 
                 <EditText
                     android:id="@+id/edFName"
@@ -86,6 +88,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/first_name"
                     android:imeOptions="actionNext"
+                    android:inputType="text"
                     android:maxLines="1"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/colorBlack" />
@@ -97,7 +100,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimension10dp"
-                android:padding="@dimen/dimension2dp">
+                android:paddingLeft="@dimen/dimension10dp"
+                android:paddingRight="@dimen/dimension10dp">
 
                 <EditText
                     android:id="@+id/edLName"
@@ -105,6 +109,29 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/last_name"
                     android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/colorBlack" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension10dp"
+                android:paddingLeft="@dimen/dimension10dp"
+                android:paddingRight="@dimen/dimension10dp"
+                >
+
+                <EditText
+                    android:id="@+id/edMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/mobile_no"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
                     android:maxLines="1"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/colorBlack" />
@@ -125,7 +152,7 @@
                 android:layout_margin="@dimen/dimension10dp"
                 android:elevation="@dimen/dimension2dp"
                 android:entries="@array/state_arr"
-                android:padding="@dimen/dimension4dp"></android.support.v7.widget.AppCompatSpinner>
+                ></android.support.v7.widget.AppCompatSpinner>
 
             <TextView
                 android:id="@+id/tvDistrict"
@@ -140,13 +167,14 @@
                 android:layout_margin="@dimen/dimension10dp"
                 android:elevation="@dimen/dimension2dp"
                 android:entries="@array/district_arr"
-                android:padding="@dimen/dimension4dp"></android.support.v7.widget.AppCompatSpinner>
+                ></android.support.v7.widget.AppCompatSpinner>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/inputTalukaName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/dimension2dp">
+                android:paddingLeft="@dimen/dimension10dp"
+                android:paddingRight="@dimen/dimension10dp">
 
                 <EditText
                     android:id="@+id/edTaluca"
@@ -155,6 +183,7 @@
                     android:hint="@string/taluka"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:inputType="text"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/colorBlack" />
 
@@ -164,7 +193,8 @@
                 android:id="@+id/inputCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/dimension2dp">
+                android:paddingLeft="@dimen/dimension10dp"
+                android:paddingRight="@dimen/dimension10dp">
 
                 <EditText
                     android:id="@+id/edCity"
@@ -173,6 +203,7 @@
                     android:hint="@string/city"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:inputType="text"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/colorBlack" />
 
@@ -183,7 +214,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimension10dp"
-                android:padding="@dimen/dimension2dp">
+                android:paddingLeft="@dimen/dimension10dp"
+                android:paddingRight="@dimen/dimension10dp">
 
                 <EditText
                     android:id="@+id/edCode"
@@ -192,6 +224,8 @@
                     android:hint="@string/postal_code"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:maxLength="6"
+                    android:inputType="number"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/colorBlack" />
 
@@ -210,7 +244,7 @@
                 android:layout_margin="@dimen/dimension10dp"
                 android:elevation="@dimen/dimension2dp"
                 android:entries="@array/language_arr"
-                android:padding="@dimen/dimension4dp"></android.support.v7.widget.AppCompatSpinner>
+                ></android.support.v7.widget.AppCompatSpinner>
 
 
             <Button
