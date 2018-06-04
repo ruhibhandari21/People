@@ -16,7 +16,7 @@
         android:textSize="18sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_margin="@dimen/dimension20dp"
-        android:text="Total Query - 200"
+        android:text="@string/total_qry"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -36,7 +36,7 @@
             android:layout_marginRight="10dp"
             android:background="@color/colorHeader"
             android:gravity="center"
-            android:text="Back"
+            android:text="@string/back"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -51,7 +51,7 @@
             android:layout_marginLeft="10dp"
             android:background="@color/colorHeader"
             android:gravity="center"
-            android:text="Share"
+            android:text="@string/share"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold" />

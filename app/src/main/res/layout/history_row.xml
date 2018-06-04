@@ -16,7 +16,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="@color/colorBlack"
-        android:text="Request"
+        android:text="@string/request"
         />
 
     <View

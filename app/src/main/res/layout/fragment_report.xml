@@ -10,7 +10,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="Reports"
+        android:text="@string/report_menu"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="30dp"
@@ -35,7 +35,7 @@
             android:layout_marginRight="20dp"
             android:background="@color/colorHeader"
             android:gravity="center"
-            android:text="Statistics"
+            android:text="@string/statistics"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -50,7 +50,7 @@
             android:layout_marginTop="40dp"
             android:background="@color/colorHeader"
             android:gravity="center"
-            android:text="Priorities"
+            android:text="@string/priorities"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -66,7 +66,7 @@
             android:layout_marginTop="40dp"
             android:background="@color/colorHeader"
             android:gravity="center"
-            android:text="Back"
+            android:text="@string/back"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold" />

@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:text="Login"
+        android:text="@string/login"
         android:layout_gravity="center"
         android:textColor="@color/colorWhite"
         android:textSize="28sp"

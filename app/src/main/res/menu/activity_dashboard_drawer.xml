@@ -4,37 +4,37 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="Home" />
+            android:title="@string/home_menu" />
         <item
             android:id="@+id/nav_search"
-            android:title="Search" />
+            android:title="@string/search_menu" />
         <item
             android:id="@+id/nav_history"
-            android:title="History" />
+            android:title="@string/history_menu" />
         <item
             android:id="@+id/nav_todo"
-            android:title="To do" />
+            android:title="@string/todo_menu" />
         <item
             android:id="@+id/nav_push"
-            android:title="Push updates" />
+            android:title="@string/push_updates_menu" />
 
         <item
             android:id="@+id/nav_report"
-            android:title="Reports" />
+            android:title="@string/report_menu" />
     </group>
 
-    <item android:title="Other">
+    <item android:title="@string/other_menu">
         <menu>
             <item
                 android:id="@+id/nav_support"
-                android:title="Support" />
+                android:title="@string/support_menu" />
             <item
                 android:id="@+id/nav_about"
-                android:title="About us" />
+                android:title="@string/about_menu" />
 
             <item
                 android:id="@+id/nav_share"
-                android:title="Share the app" />
+                android:title="@string/share_app_menu" />
         </menu>
     </item>
 

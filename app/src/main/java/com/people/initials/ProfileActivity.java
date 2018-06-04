@@ -21,4 +21,16 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void initUI(){
+
+    }
+
+    private void initListener(){
+
+    }
+
+    private void validate(){
+
+    }
 }

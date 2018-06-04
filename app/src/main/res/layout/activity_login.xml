@@ -6,14 +6,15 @@
 
     <LinearLayout
         android:id="@+id/header"
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:elevation="2dp"
         android:background="@color/colorHeader"
         android:layout_height="50dp">
 
         <TextView
             android:id="@+id/tv_title"
-            android:text="Login"
+            android:text="@string/login"
             android:layout_gravity="center"
             android:textColor="@color/colorWhite"
             android:textSize="22sp"
@@ -35,7 +36,7 @@
             android:textColor="@color/colorWhite"
             android:gravity="center"
             android:background="#333333"
-            android:text="Copyright 2018"
+            android:text="@string/copyright"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -52,7 +53,7 @@
                 android:id="@+id/tv_kyc"
                 android:layout_width="match_parent"
                 android:layout_margin="30dp"
-                android:text="Enter KYC Details"
+                android:text="@string/kyc_title"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -69,7 +70,7 @@
                     style="@style/TextViewStyle"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="2"
-                    android:text="@string/mobileno" />
+                    android:text="@string/mobile_no" />
 
                 <EditText
                     android:singleLine="true"
@@ -123,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content"
-                android:text="Terms And Conditions" />
+                android:text="@string/terms_condition" />
 
             <Button
                 android:visibility="gone"
@@ -135,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/btn_border"
-                android:text="LOGIN"
+                android:text="@string/login"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:textColor="@color/colorWhite"
@@ -151,7 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/btn_border"
-                android:text="Send OTP"
+                android:text="@string/send_otp"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:textColor="@color/colorWhite"

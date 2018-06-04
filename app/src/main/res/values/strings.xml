@@ -1,9 +1,39 @@
 <resources>
+
     <string name="app_name">FigureYourLead</string>
-    <string name="mobileno">Mobile No.</string>
+
+    //Other titles
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //menu
+    <string name="home_menu">Home</string>
+    <string name="search_menu">Search</string>
+    <string name="history_menu">History</string>
+    <string name="todo_menu">To do</string>
+    <string name="push_updates_menu">Push updates</string>
+    <string name="report_menu">Reports</string>
+    <string name="other_menu">Other</string>
+    <string name="support_menu">Support</string>
+    <string name="about_menu">About us</string>
+    <string name="share_app_menu">Share the app</string>
+
+
+    //Login
+    <string name="login">Login</string>
+    <string name="kyc_title">Enter KYC Details</string>
+    <string name="mobile_no">Mobile No</string>
+    <string name="terms_condition">Terms And Conditions</string>
+    <string name="send_otp">SEND OTP</string>
+    <string name="copyright">Copyright 2018</string>
     <string name="otp">OTP</string>
 
-
+    //Profile
     <string-array name="state_arr">
         <item>Andra Pradesh</item>
         <item>Arunachal Pradesh</item>
@@ -35,14 +65,11 @@
         <item>West Bengal</item>
 
     </string-array>
-
-
     <string-array name="district_arr">
         <item>Pune</item>
         <item>Solapur</item>
         <item>Mumbai</item>
     </string-array>
-
     <string-array name="people_arr">
         <item>Ruhi Bhandari</item>
         <item>Shadaf Shaikh</item>
@@ -54,20 +81,66 @@
 
 
     </string-array>
-
-
     <string-array name="language_arr">
         <item>English</item>
         <item>Hindi</item>
     </string-array>
-    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="profile">Profile</string>
+    <string name="first_name">First name*</string>
+    <string name="last_name">Last name*</string>
+    <string name="select_state">Select state</string>
+    <string name="select_district">Select district</string>
+    <string name="taluka">Taluka</string>
+    <string name="city">City/Village</string>
+    <string name="postal_code">Postal code*</string>
+    <string name="select_lang">Select language</string>
+    <string name="submit">SUBMIT</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    //Role screen
+    <string name="who_are_u">Who are you?</string>
+    <string name="voter">Voter</string>
+    <string name="leader">Leader</string>
 
-    <string name="action_settings">Settings</string>
+    //Pie-chart screen(reports)
+    <string name="back">back</string>
+    <string name="total_qry">Total Query - 200</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    //Feedback
+    <string name="feedback_details">Thank you for using our services.\nWe hope you are receiving benefits from this.\n\nPlease let us know your kind feedback.</string>
+    <string name="feedback_comment">Add feedback here...</string>
+    <string name="submit_feedback">Submit feedback</string>
+
+    //Priorities screen
+    <string name="share">Share</string>
+
+    //Push updates
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="attach_file">Attach file</string>
+    <string name="publish">Publish</string>
+
+    //Reports
+    <string name="statistics">Statistics</string>
+    <string name="priorities">Priorities</string>
+
+    //Request
+    <string name="request">Request</string>
+    <string name="to">To</string>
+
+    //Query option screen
+    <string name="complaint">Complaint</string>
+    <string name="suggestion">Suggestion</string>
+    <string name="feedback">Feedback</string>
+
+    //Search screen
+    <string name="enter_name">Enter name</string>
+    <string name="search_lead">Search your Lead</string>
+
+    //voter_feedback
+    <string name="cancel">Cancel</string>
+    <string name="retry">Retry</string>
+
+    //post_layout
+    <string name="more">More</string>
 
 </resources>

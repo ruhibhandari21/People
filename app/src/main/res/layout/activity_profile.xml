@@ -8,7 +8,6 @@
         android:id="@+id/activity_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         >
 
         <LinearLayout
@@ -25,7 +24,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Profile"
+                android:text="@string/profile"
                 android:textColor="@color/colorWhite"
                 android:textSize="22sp" />
 
@@ -85,7 +84,7 @@
                     android:id="@+id/edFName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="First Name*"
+                    android:hint="@string/first_name"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:textAppearance="?android:textAppearanceSmall"
@@ -104,7 +103,7 @@
                     android:id="@+id/edLName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Last Name*"
+                    android:hint="@string/last_name"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:textAppearance="?android:textAppearanceSmall"
@@ -118,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimension10dp"
                 android:layout_marginTop="@dimen/dimension10dp"
-                android:text="Select state" />
+                android:text="@string/select_state" />
 
             <android.support.v7.widget.AppCompatSpinner
                 android:layout_width="match_parent"
@@ -133,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimension10dp"
-                android:text="Select district" />
+                android:text="@string/select_district" />
 
             <android.support.v7.widget.AppCompatSpinner
                 android:layout_width="match_parent"
@@ -153,7 +152,7 @@
                     android:id="@+id/edTaluca"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Taluka"
+                    android:hint="@string/taluka"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:textAppearance="?android:textAppearanceSmall"
@@ -171,7 +170,7 @@
                     android:id="@+id/edCity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="City/Village*"
+                    android:hint="@string/city"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:textAppearance="?android:textAppearanceSmall"
@@ -190,7 +189,7 @@
                     android:id="@+id/edCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Postal code*"
+                    android:hint="@string/postal_code"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:textAppearance="?android:textAppearanceSmall"
@@ -203,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimension10dp"
-                android:text="Select language" />
+                android:text="@string/select_lang" />
 
             <android.support.v7.widget.AppCompatSpinner
                 android:layout_width="match_parent"
@@ -225,7 +224,7 @@
                 android:layout_marginBottom="@dimen/dimension10dp"
                 android:background="@drawable/btn_border"
                 android:gravity="center"
-                android:text="SUBMIT"
+                android:text="@string/submit"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp" />
 
