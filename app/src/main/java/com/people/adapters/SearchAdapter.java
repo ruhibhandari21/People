@@ -54,13 +54,13 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         holder.tv_title.setText(arrayList.get(position));
         if(position%2==0)
         {
-            holder.btn_follow.setText("Follow");
-            holder.btn_follow.setBackgroundColor(mContext.getResources().getColor(R.color.colorHeader));
+            holder.btn_follow.setText(mContext.getResources().getText(R.string.follow));
+            holder.btn_follow.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
         }
         else
         {
-            holder.btn_follow.setText("Unfollow");
-            holder.btn_follow.setBackgroundColor(mContext.getResources().getColor(android.R.color.holo_red_dark));
+            holder.btn_follow.setText(mContext.getResources().getText(R.string.unfollow));
+            holder.btn_follow.setTextColor(mContext.getResources().getColor(android.R.color.holo_red_dark));
         }
     }
 

@@ -6,7 +6,7 @@
     <string name="title_activity_dashboard">Home</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_settings">सेटिंग्स</string>
+    <string name="action_settings">भाषा बदलो</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -22,6 +22,7 @@
     <string name="support_menu">समर्थन</string>
     <string name="about_menu">हमारे बारे में</string>
     <string name="share_app_menu">शेयर अप्प</string>
+    <string name="raise_the_qry">सवाल जमा करें</string>
 
 
     //Login
@@ -78,9 +79,15 @@
         <item>Harsh</item>
         <item>Avinash</item>
         <item>Ayesha</item>
-
-
     </string-array>
+
+    <string-array name="post_arr">
+        <item>मंत्री</item>
+        <item>विधायक</item>
+        <item>सरपंच</item>
+        <item>अन्य</item>
+    </string-array>
+
     <string-array name="language_arr">
         <item>English</item>
         <item>हिंदी</item>
@@ -89,6 +96,7 @@
     <string name="first_name">पहला नाम*</string>
     <string name="last_name">अंतिम नाम*</string>
     <string name="select_state">राज्य चुनें</string>
+    <string name="select_post">पोस्ट चुनें</string>
     <string name="select_district">जिला का चयन करें</string>
     <string name="taluka">तालुका</string>
     <string name="city">शहर/गाँव</string>
@@ -135,6 +143,8 @@
     //Search screen
     <string name="enter_name">नाम दर्ज करें</string>
     <string name="search_lead">अपने नेता को खोजें</string>
+    <string name="follow">फॉलो</string>
+    <string name="unfollow">एन फॉलो</string>
 
     //voter_feedback
     <string name="cancel">रद्द करें</string>
@@ -142,5 +152,6 @@
 
     //post_layout
     <string name="more">अधिक</string>
+    <string name="less">कम</string>
 
 </resources>

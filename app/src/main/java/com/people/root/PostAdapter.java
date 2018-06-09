@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -22,17 +23,23 @@ import static com.people.R.drawable;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         private DisplayImageOptions options;
+        Context context;
 
         public class ViewHolder extends RecyclerView.ViewHolder {
 
-            ImageView imgProfile;
+            ImageView imgProfile, imgStar;
+            TextView more, tvDesc;
             public ViewHolder(View view) {
                 super(view);
                 imgProfile = (ImageView) itemView.findViewById(R.id.imgProfile);
+                imgStar = (ImageView) itemView.findViewById(R.id.imgStar);
+                more = (TextView) itemView.findViewById(R.id.more);
+                tvDesc = (TextView) itemView.findViewById(R.id.tvDesc);
             }
         }
 
         public PostAdapter(Context context) {
+            this.context = context;
             options = new DisplayImageOptions.Builder()
                     .displayer(new CircleBitmapDisplayer())
                     .showImageOnLoading(drawable.profile)
@@ -55,9 +62,41 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, final int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
 
             ImageLoader.getInstance().displayImage("" , holder.imgProfile, options);
+            holder.more.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
+                    TextView text = (TextView)v;
+                    String str = (String) context.getResources().getText(R.string.more);
+                    if(text.getText().toString().equalsIgnoreCase(str)){
+                        text.setText(context.getResources().getText(R.string.less));
+                        holder.tvDesc.setMaxLines(Integer.MAX_VALUE);
+                    }else{
+                        text.setText(context.getResources().getText(R.string.more));
+                        holder.tvDesc.setMaxLines(2);
+                    }
+
+
+                }
+            });
+
+            holder.imgStar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ImageView stars = (ImageView)v;
+                    if(stars.getTag()==null){
+                        stars.setTag("set");
+                        stars.setImageDrawable(context.getResources().getDrawable(R.drawable.fade_stars));
+                    }else{
+                        stars.setTag(null);
+                        stars.setImageDrawable(context.getResources().getDrawable(R.drawable.stars));
+                    }
+                }
+            });
 
         }
 

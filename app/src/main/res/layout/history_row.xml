@@ -15,6 +15,7 @@
         android:gravity="center|right"
         android:textSize="14sp"
         android:textStyle="bold"
+        android:textAllCaps="true"
         android:textColor="@color/colorBlack"
         android:text="@string/request"
         />

@@ -22,6 +22,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
 import com.people.R;
 import com.people.root.DashboardActivity;
+import com.people.utils.AppConstants;
 import com.people.utils.PreferencesManager;
 
 import java.io.File;
@@ -33,6 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
     String imgDecodeString = "";
     ImageView profilePic;
     private DisplayImageOptions options;
+    PreferencesManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +46,17 @@ public class ProfileActivity extends AppCompatActivity {
                 validate();
             }
         });
+
+        manager = PreferencesManager.getInstance(ProfileActivity.this);
+        if(manager.getInt(AppConstants.PREF_ROLE) == AppConstants.VOTER){
+            findViewById(R.id.tvPost).setVisibility(View.GONE);
+            findViewById(R.id.spinnerPost).setVisibility(View.GONE);
+        }
+
         profilePic = (ImageView) findViewById(R.id.profilePic);
         profilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PreferencesManager manager = PreferencesManager.getInstance(ProfileActivity.this);
                 if(!manager.getString("profile").equalsIgnoreCase("")){
                     showLogoDialog();
                 }else{
@@ -67,7 +75,6 @@ public class ProfileActivity extends AppCompatActivity {
                 Builder(this).build();
 
         ImageLoader.getInstance().init(config);
-        PreferencesManager manager = PreferencesManager.getInstance(this);
         if(!manager.getString("mobile").equalsIgnoreCase("")){
             EditText mobile = getEditText(R.id.edMobile);
             mobile.setText(manager.getString("mobile"));
@@ -88,12 +95,12 @@ public class ProfileActivity extends AppCompatActivity {
         EditText firstName = getEditText(R.id.edFName);
         EditText lastName = getEditText(R.id.edLName);
         if(firstName.getText().length() == 0){
-            firstName.setError("Name should not be blank");
+            firstName.setError("First name should not be blank");
             return;
         }
 
         if(lastName.getText().length() == 0){
-            firstName.setError("Name should not be blank");
+            lastName.setError("Last name should not be blank");
             return;
         }
 

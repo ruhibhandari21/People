@@ -6,7 +6,7 @@
     <string name="title_activity_dashboard">DashboardActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Switch lang</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -22,6 +22,7 @@
     <string name="support_menu">Support</string>
     <string name="about_menu">About us</string>
     <string name="share_app_menu">Share the app</string>
+    <string name="raise_the_qry">Raise the query</string>
 
 
     //Login
@@ -78,9 +79,15 @@
         <item>Harsh</item>
         <item>Avinash</item>
         <item>Ayesha</item>
-
-
     </string-array>
+
+    <string-array name="post_arr">
+        <item>Minister</item>
+        <item>Legislator</item>
+        <item>Sarpanch</item>
+        <item>Other</item>
+    </string-array>
+
     <string-array name="language_arr">
         <item>English</item>
         <item>Hindi</item>
@@ -89,6 +96,7 @@
     <string name="first_name">First name*</string>
     <string name="last_name">Last name*</string>
     <string name="select_state">Select state</string>
+    <string name="select_post">Select post</string>
     <string name="select_district">Select district</string>
     <string name="taluka">Taluka</string>
     <string name="city">City/Village</string>
@@ -134,6 +142,8 @@
 
     //Search screen
     <string name="enter_name">Enter name</string>
+    <string name="follow">Follow</string>
+    <string name="unfollow">Unfollow</string>
     <string name="search_lead">Search your Lead</string>
 
     //voter_feedback
@@ -142,5 +152,5 @@
 
     //post_layout
     <string name="more">More</string>
-
+    <string name="less">Less</string>
 </resources>

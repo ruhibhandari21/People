@@ -15,8 +15,9 @@
         android:layout_centerInParent="true"
         android:textSize="16sp"
         android:textColor="@color/colorBlack"
-        android:layout_alignParentTop="true"
         android:text="Water Problem"
+        android:gravity="center|left"
+        android:paddingLeft="@dimen/dimension4dp"
         />
 
     <LinearLayout
@@ -31,13 +32,13 @@
             android:layout_gravity="center"
             android:id="@+id/btn_follow"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@color/colorHeader"
+            android:layout_height="wrap_content"
             android:text="Follow"
             android:textSize="12sp"
             android:textAllCaps="false"
             android:gravity="center"
-            android:textColor="@color/colorWhite"
+            style="@style/PrimaryWhiteButton"
+            android:textColor="@color/colorPrimaryDark"
             />
 
     </LinearLayout>

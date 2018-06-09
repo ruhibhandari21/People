@@ -58,7 +58,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
 
             case R.id.btn_login:
-                startActivity(new Intent(this, ProfileActivity.class));
                 EditText edt_otp = getEditText(R.id.edt_otp);
                 PreferencesManager manager = PreferencesManager.getInstance(this);
                 manager.putString("mobile", getEditText(R.id.edt_terminal_id).getText().toString());

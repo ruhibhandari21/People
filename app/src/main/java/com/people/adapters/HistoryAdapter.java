@@ -47,17 +47,17 @@ private Context mContext;
 
         if(position%2==0)
         {
-            holder.tv_flag.setText("Request");
+            holder.tv_flag.setText(mContext.getResources().getText(R.string.request));
             holder.tv_flag.setTextColor(mContext.getResources().getColor(R.color.colorHeader));
         }
         else if(position==3)
         {
-            holder.tv_flag.setText("Complaint");
+            holder.tv_flag.setText(mContext.getResources().getText(R.string.complaint));
             holder.tv_flag.setTextColor(mContext.getResources().getColor(android.R.color.holo_red_dark));
         }
         else
         {
-            holder.tv_flag.setText("Suggestion");
+            holder.tv_flag.setText(mContext.getResources().getText(R.string.suggestion));
             holder.tv_flag.setTextColor(mContext.getResources().getColor(android.R.color.holo_orange_dark));
         }
 

@@ -10,4 +10,8 @@ public class AppConstants {
 
     //live
     public static String BASE_URL="http://myposmate.com/api/v1/";
+
+
+    //Preferences
+    public static final String PREF_ROLE = "key_role";
 }//app contants end
