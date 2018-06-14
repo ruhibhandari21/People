@@ -13,9 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.people.R;
+import com.people.utils.AppConstants;
+import com.people.utils.OkHttpHandler;
+import com.people.utils.OnTaskCompleted;
 import com.people.utils.PreferencesManager;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+import java.util.HashMap;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, OnTaskCompleted {
 
     private TextView tv_title;
     private Button btn_send_otp,btn_login;
@@ -32,8 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         initListener();
     }
 
-    public void initUI()
-    {
+    public void initUI(){
         tv_title=(TextView)findViewById(R.id.tv_title);
         Typeface font = Typeface.createFromAsset(getAssets(), "Caviar_Dreams_Bold.ttf");
         tv_title.setTypeface(font);
@@ -47,8 +51,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ll_otp.setVisibility(View.GONE);
     }
 
-    public void initListener()
-    {
+    public void initListener(){
         btn_login.setOnClickListener(this);
         btn_send_otp.setOnClickListener(this);
     }
@@ -92,4 +95,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return (EditText)findViewById(id);
     }
 
+    private void callService(String API){
+        HashMap<String,String> requestMap = new HashMap();
+        String requestUrl = AppConstants.BASE_URL + API;
+        switch(API){
+            case AppConstants.GENERATE_OTP:
+                break;
+
+            case AppConstants.LOGIN:
+                break;
+
+           }
+
+        OkHttpHandler okHttpHandler = new OkHttpHandler(this, this, requestMap, API);
+        okHttpHandler.execute(requestUrl);
+
+    }
+
+    @Override
+    public void onTaskCompleted(String result, String TAG) throws Exception {
+
+    }
 }

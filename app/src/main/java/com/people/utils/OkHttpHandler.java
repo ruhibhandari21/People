@@ -100,179 +100,12 @@ public class OkHttpHandler extends AsyncTask {
         return result.toString();
     }
 
-    boolean isConnectedFlag = false;
-    CountDownTimer countDownTimerxmpp;
-    public void startCounter() {
-         countDownTimerxmpp = new CountDownTimer(30000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                if (preferencesManager.isConnected()) {
-                    isConnectedFlag = true;
-                    OkHttpHandler.this.cancel(true);
-                    new OkHttpHandler(mContext, listener, postDataParams, TAG).execute(dup_url);
-                    this.cancel();
-                }
-            }
-
-            public void onFinish() {
-                if (isConnectedFlag == false)
-                    ((Activity) mContext).runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            final Dialog dialog = new Dialog(mContext);
-                            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-                            LayoutInflater lf = (LayoutInflater) (mContext)
-                                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                            View dialogview = lf.inflate(R.layout.retry_dialog, null);
-                            TextView title = (TextView) dialogview.findViewById(R.id.title);
-                            title.setText("Note");
-                            TextView body = (TextView) dialogview
-                                    .findViewById(R.id.dialogBody);
-                            body.setText("Your connection to the server has been disconnected.Please retry to connect with the server.");
-                            dialog.setContentView(dialogview);
-                            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-                            lp.copyFrom(dialog.getWindow().getAttributes());
-                            lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-                            lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                            lp.gravity = Gravity.CENTER;
-
-                            dialog.getWindow().setAttributes(lp);
-                            dialog.show();
-                            TextView cancel = (TextView) dialogview
-                                    .findViewById(R.id.dialogCancel);
-                            cancel.setOnClickListener(new View.OnClickListener() {
-
-                                @Override
-                                public void onClick(View v) {
-                                    try {
-                                        listener.onTaskCompleted("", TAG);
-                                        isWebserviceRunning = false;
-
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-
-
-                                    dialog.dismiss();
-
-                                }
-                            });
-
-                            TextView retry = (TextView) dialogview
-                                    .findViewById(R.id.dialogRetry);
-                            retry.setOnClickListener(new View.OnClickListener() {
-
-                                @Override
-                                public void onClick(View v) {
-                                    OkHttpHandler.this.cancel(true);
-                                    new OkHttpHandler(mContext, listener, postDataParams, TAG).execute(dup_url);
-                                    countDownTimerxmpp.cancel();
-                                    dialog.dismiss();
-
-                                }
-                            });
-
-                        }
-
-                    });
-                countDownTimerxmpp.cancel();
-            }
-
-        }.start();
-    }
-
-
-    public void showCountTimer()
-    {
-        ((Activity) mContext).runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-
-                final Dialog dialog = new Dialog(mContext);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-                LayoutInflater lf = (LayoutInflater) (mContext)
-                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View dialogview = lf.inflate(R.layout.retry_dialog, null);
-                TextView title = (TextView) dialogview.findViewById(R.id.title);
-                title.setText("Note");
-                TextView body = (TextView) dialogview
-                        .findViewById(R.id.dialogBody);
-                body.setText("Your connection to the server has been disconnected.Please retry to connect with the server.");
-                dialog.setContentView(dialogview);
-                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-                lp.copyFrom(dialog.getWindow().getAttributes());
-                lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-                lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                lp.gravity = Gravity.CENTER;
-
-                dialog.getWindow().setAttributes(lp);
-                dialog.show();
-                TextView cancel = (TextView) dialogview
-                        .findViewById(R.id.dialogCancel);
-                cancel.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        try {
-                            listener.onTaskCompleted("", TAG);
-                            isWebserviceRunning = false;
-                            OkHttpHandler.this.cancel(true);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-
-                        dialog.dismiss();
-
-                    }
-                });
-
-                TextView retry = (TextView) dialogview
-                        .findViewById(R.id.dialogRetry);
-                retry.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        OkHttpHandler.this.cancel(true);
-                        new OkHttpHandler(mContext, listener, postDataParams, TAG).execute(dup_url);
-                        dialog.dismiss();
-
-                    }
-                });
-
-            }
-
-        });
-
-    }
-
-
-
     private String uploadData(String requestURL, HashMap<String, String> postDataParams, String TAG) {
         InputStream is = null;
         URL url;
         String response = "";
 
         try {
-
-//            if (((POSMateApplication) mContext).asbtractConnection != null) {
-//                if (!((POSMateApplication) mContext).asbtractConnection.isConnected()) {
-//
-//                    ((POSMateApplication) mContext).initChat(preferencesManager.getUsername(), preferencesManager.getPassword());
-//                    startCounter();
-//                }
-//            }
-//if(!isConnectedFlag)
-//    return "-1";
-
-//            if(!preferencesManager.isConnected())
-//            {
-//                showCountTimer();
-//                return "";
-//            }
 
             url = new URL(requestURL);
             Log.v(TAG + ":API", url.toString());
@@ -307,8 +140,6 @@ public class OkHttpHandler extends AsyncTask {
                 while ((line = br.readLine()) != null) {
                     response += line;
                 }
-//                response = "";
-
             }
             Log.v("Response:" + TAG, response);
         } catch (SocketTimeoutException s) {
@@ -331,7 +162,6 @@ public class OkHttpHandler extends AsyncTask {
     @Override
     protected String doInBackground(Object[] objects) {
         dup_url = objects[0].toString();
-        isWebserviceRunning = true;
         return uploadData(objects[0].toString(), postDataParams, TAG);
     }
 
@@ -339,7 +169,6 @@ public class OkHttpHandler extends AsyncTask {
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
         try {
-            isWebserviceRunning = false;
             listener.onTaskCompleted(o.toString(), TAG);
             cancel(true);
         } catch (Exception e) {
@@ -351,8 +180,6 @@ public class OkHttpHandler extends AsyncTask {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-
-
     }
 
     private void showAlert() {
