@@ -97,12 +97,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void callService(String API){
         HashMap<String,String> requestMap = new HashMap();
+        PreferencesManager manager = PreferencesManager.getInstance(this);
         String requestUrl = AppConstants.BASE_URL + API;
         switch(API){
             case AppConstants.GENERATE_OTP:
+                requestMap.put("MobileNo", getEditText(R.id.edt_terminal_id).getText().toString());
+                requestMap.put("Role", manager.getInt(AppConstants.PREF_ROLE)+"");
                 break;
 
             case AppConstants.LOGIN:
+                requestMap.put("MobileNo", getEditText(R.id.edt_otp).getText().toString());
+                requestMap.put("Role", manager.getInt(AppConstants.PREF_ROLE)+"");
+                requestMap.put("Otp", getEditText(R.id.edt_terminal_id).getText().toString());
                 break;
 
            }
@@ -114,6 +120,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onTaskCompleted(String result, String TAG) throws Exception {
+
+        switch(TAG){
+
+        }
 
     }
 }
