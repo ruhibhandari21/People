@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     btn_login.setVisibility(View.VISIBLE);
                     chk_vise.setVisibility(View.VISIBLE);
                     ll_otp.setVisibility(View.VISIBLE);
+                    callService(AppConstants.GENERATE_OTP);
                 }
 
                 break;
