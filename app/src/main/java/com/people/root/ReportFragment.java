@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 //
 import com.people.R;
+import com.people.utils.AppConstants;
 
 /**
  * Created by admin on 5/15/2018.
@@ -86,18 +87,17 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_prorities:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.PRIORITIES,null);
+                ((DashboardActivity)mContext).callSetupFragment(AppConstants.Screens.PRIORITIES,null);
                 break;
             case R.id.tv_statistics:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.PIECHART,null);
+                ((DashboardActivity)mContext).callSetupFragment(AppConstants.Screens.PIECHART,null);
                 break;
             case R.id.btn_back:
                 FragmentManager fragmentManager = ((DashboardActivity)mContext).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 PostFragment fragment = PostFragment.newInstance("", "");
-                String  CURRENTFRAGMENT = DashboardActivity.SCREENS.HOME.toString();
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
+                fragmentTransaction.replace(R.id.inner_frame, fragment, AppConstants.Screens.HOME+"");
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
 

@@ -92,7 +92,7 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.VOTERQUERYRAISING,null);
+                ((DashboardActivity)mContext).callSetupFragment(AppConstants.Screens.VOTERQUERYRAISING,null);
                 break;
             case R.id.btn_submit:
                 Toast.makeText(mContext, "Under Implementation", Toast.LENGTH_SHORT).show();

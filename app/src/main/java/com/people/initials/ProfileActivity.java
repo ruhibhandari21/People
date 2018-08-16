@@ -82,19 +82,11 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    private void initUI(){
-
-    }
-
-    private void initListener(){
-
-    }
-
     private void validate(){
 
         EditText firstName = getEditText(R.id.edFName);
         EditText lastName = getEditText(R.id.edLName);
-        if(firstName.getText().length() == 0){
+      /*  if(firstName.getText().length() == 0){
             firstName.setError("First name should not be blank");
             return;
         }
@@ -102,7 +94,7 @@ public class ProfileActivity extends AppCompatActivity {
         if(lastName.getText().length() == 0){
             lastName.setError("Last name should not be blank");
             return;
-        }
+        }*/
 
         startActivity(new Intent(ProfileActivity.this, DashboardActivity.class));
     }
@@ -203,6 +195,7 @@ public class ProfileActivity extends AppCompatActivity {
         PreferencesManager manager = PreferencesManager.getInstance(this);
         manager.putString("profile",imgDecodeString);
     }
+
     private String saveToInternalStorage(Bitmap bitmapImage) {
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);

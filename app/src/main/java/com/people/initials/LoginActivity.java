@@ -20,7 +20,8 @@ import com.people.utils.PreferencesManager;
 
 import java.util.HashMap;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, OnTaskCompleted {
+public class LoginActivity extends AppCompatActivity implements
+        View.OnClickListener, OnTaskCompleted {
 
     private TextView tv_title;
     private Button btn_send_otp,btn_login;

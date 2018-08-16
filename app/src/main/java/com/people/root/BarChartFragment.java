@@ -4,9 +4,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +16,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.people.R;
-import com.people.adapters.HistoryAdapter;
+import com.people.utils.AppConstants;
 
 import java.util.ArrayList;
 
@@ -108,7 +105,7 @@ public class BarChartFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REPORT,null);
+                ((DashboardActivity)mContext).callSetupFragment(AppConstants.Screens.REPORT,null);
                 break;
         }
     }

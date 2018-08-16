@@ -19,4 +19,12 @@ public class AppConstants {
 
     //Preferences
     public static final String PREF_ROLE = "key_role";
+
+
+    public static abstract class Screens {
+        public static final int HOME = 0, REPORT = 1, PIECHART =2, PRIORITIES =3, PUSHUPDATES = 4, REQUEST = 5,
+                VOTERQUERYRAISING = 6, HISTORY = 7, VOTERVIEWFEEDBACK = 8, VOTERSEARCH = 9,
+                TODO = 10, FEEDBACK = 11;
+    }
+
 }//app contants end
