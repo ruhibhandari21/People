@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.people.R;
 import com.people.root.DashboardActivity;
+import com.people.utils.AppConstants;
 
 /**
  * Created by admin on 5/15/2018.
@@ -46,7 +47,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.VOTERVIEWFEEDBACK,null);
+                ((DashboardActivity)mContext).callSetupFragment(AppConstants.Screens.VOTERVIEWFEEDBACK,null);
             }
         });
     }

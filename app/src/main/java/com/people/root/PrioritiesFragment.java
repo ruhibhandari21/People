@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.people.R;
+import com.people.utils.AppConstants;
 
 import java.util.ArrayList;
 
@@ -108,7 +109,7 @@ public class PrioritiesFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.REPORT,null);
+                ((DashboardActivity)mContext).callSetupFragment(AppConstants.Screens.REPORT,null);
                 break;
             case R.id.btn_share:
                 Toast.makeText(mContext, "Under development", Toast.LENGTH_SHORT).show();
