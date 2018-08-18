@@ -1,5 +1,8 @@
 package com.people.initials;
 
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -11,18 +14,21 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.people.ApiCalls;
+import com.people.ProgressFragment;
 import com.people.R;
 import com.people.utils.AppConstants;
-import com.people.utils.OkHttpHandler;
-import com.people.utils.OnTaskCompleted;
 import com.people.utils.PreferencesManager;
-
+import org.json.JSONObject;
 import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements
-        View.OnClickListener, OnTaskCompleted {
+        View.OnClickListener, ApiCalls.ApiCallback {
 
+    private final String TAG = getLocalClassName();
     private TextView tv_title;
     private Button btn_send_otp,btn_login;
     private CheckBox chk_vise;
@@ -85,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements
                     btn_login.setVisibility(View.VISIBLE);
                     chk_vise.setVisibility(View.VISIBLE);
                     ll_otp.setVisibility(View.VISIBLE);
-                    callService(AppConstants.GENERATE_OTP);
+//                    apiCalls(AppConstants.WebApi.GENERATE_OTP);
                 }
 
                 break;
@@ -97,35 +103,64 @@ public class LoginActivity extends AppCompatActivity implements
         return (EditText)findViewById(id);
     }
 
-    private void callService(String API){
-        HashMap<String,String> requestMap = new HashMap();
-        PreferencesManager manager = PreferencesManager.getInstance(this);
-        String requestUrl = AppConstants.BASE_URL + API;
-        switch(API){
-            case AppConstants.GENERATE_OTP:
-                requestMap.put("MobileNo", getEditText(R.id.edt_terminal_id).getText().toString());
-                requestMap.put("Role", manager.getInt(AppConstants.PREF_ROLE)+"");
+    private void apiCalls(String tag){
+
+        showProgress(false);
+        Map<String, String> params = new HashMap<String, String>();
+        ApiCalls apiCalls = new ApiCalls(this);
+
+        switch (tag){
+
+            case AppConstants.WebApi.GENERATE_OTP:
+                params.put("MobileNo", getEditText(R.id.edt_terminal_id).getText().toString().trim());
+                params.put("Role", PreferencesManager.getInstance(this).
+                        getInt(AppConstants.Preference.PREF_ROLE)+"");
                 break;
 
-            case AppConstants.LOGIN:
-                requestMap.put("MobileNo", getEditText(R.id.edt_otp).getText().toString());
-                requestMap.put("Role", manager.getInt(AppConstants.PREF_ROLE)+"");
-                requestMap.put("Otp", getEditText(R.id.edt_terminal_id).getText().toString());
+            case AppConstants.WebApi.LOGIN:
+                params.put("MobileNo", getEditText(R.id.edt_terminal_id).getText().toString().trim());
+                params.put("Role", PreferencesManager.getInstance(this).
+                        getInt(AppConstants.Preference.PREF_ROLE)+"");
+                params.put("Otp", getEditText(R.id.edt_otp).getText().toString());
                 break;
 
-           }
+        }
+        apiCalls.initiateRequest(Request.Method.POST, tag,new JSONObject(params), tag);
+    }
 
-        OkHttpHandler okHttpHandler = new OkHttpHandler(this, this, requestMap, API);
-        okHttpHandler.execute(requestUrl);
+    private void showProgress(boolean isDismiss){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        if(!isDismiss) {
+            DialogFragment dialogFragment = new ProgressFragment();
+            dialogFragment.show(ft, "dialog");
+        }
+    }
+
+    @Override
+    public void onResponse(JSONObject response, String TAG) {
+
+        switch (TAG){
+            case AppConstants.WebApi.GENERATE_OTP:
+                break;
+            case AppConstants.WebApi.LOGIN:
+                break;
+        }
 
     }
 
     @Override
-    public void onTaskCompleted(String result, String TAG) throws Exception {
-
-        switch(TAG){
-
+    public void onError(VolleyError error, String TAG) {
+        switch (TAG){
+            case AppConstants.WebApi.GENERATE_OTP:
+                break;
+            case AppConstants.WebApi.LOGIN:
+                break;
         }
-
     }
 }

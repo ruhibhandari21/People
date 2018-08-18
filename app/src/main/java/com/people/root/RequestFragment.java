@@ -7,7 +7,9 @@ package com.people.root;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +18,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.people.ApiCalls;
+import com.people.ProgressFragment;
 import com.people.R;
 import com.people.utils.AppConstants;
+import com.people.utils.PreferencesManager;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
 
 
-public class RequestFragment extends Fragment implements View.OnClickListener {
+public class RequestFragment extends Fragment implements View.OnClickListener,
+        ApiCalls.ApiCallback{
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -117,6 +130,64 @@ public class RequestFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
 
+        }
+    }
+
+    private void apiCalls(String tag){
+
+        showProgress(false);
+        Map<String, String> params = new HashMap<String, String>();
+        ApiCalls apiCalls = new ApiCalls(this);
+
+        switch (tag){
+
+            case AppConstants.WebApi.SUBMIT_QUERY:
+                params.put("leader_id", "");
+                params.put("user_id","");
+                params.put("query_title","");
+                params.put("query_msg","");
+                params.put("query_attachment","");
+                params.put("query_type","");
+                break;
+
+            case AppConstants.WebApi.GET_QUERY_COUNT:
+                params.put("userId", "");
+                break;
+
+        }
+        apiCalls.initiateRequest(Request.Method.POST, tag,new JSONObject(params), tag);
+    }
+
+    private void showProgress(boolean isDismiss){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        DialogFragment dialogFragment = new ProgressFragment();
+        if(!isDismiss)
+            dialogFragment.show(ft, "dialog");
+    }
+
+    @Override
+    public void onResponse(JSONObject response, String TAG) {
+
+        switch (TAG){
+            case AppConstants.WebApi.SUBMIT_QUERY:
+                break;
+        }
+
+    }
+
+    @Override
+    public void onError(VolleyError error, String TAG) {
+        switch (TAG){
+            case AppConstants.WebApi.SUBMIT_QUERY:
+                break;
+            case AppConstants.WebApi.GET_QUERY_COUNT:
+                break;
         }
     }
 }

@@ -3,7 +3,9 @@ package com.people.root;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,17 +16,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.people.ApiCalls;
+import com.people.ProgressFragment;
 import com.people.R;
-import com.people.adapters.HistoryAdapter;
 import com.people.adapters.SearchAdapter;
+import com.people.utils.AppConstants;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by admin on 5/15/2018.
  */
 
-public class VoterSearchFragment extends Fragment implements View.OnClickListener {
+public class VoterSearchFragment extends Fragment implements View.OnClickListener,
+        ApiCalls.ApiCallback{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -130,5 +141,55 @@ public class VoterSearchFragment extends Fragment implements View.OnClickListene
         btn_search.setOnClickListener(this);
     }
 
+    private void apiCalls(String tag){
+
+        showProgress(false);
+        Map<String, String> params = new HashMap<String, String>();
+        ApiCalls apiCalls = new ApiCalls(this);
+
+        switch (tag){
+
+            case AppConstants.WebApi.FOLLOW_LEADER:
+                params.put("userId", "");
+                params.put("leaderId", "");
+                params.put("status", "");
+                break;
+
+        }
+        apiCalls.initiateRequest(Request.Method.POST, tag,new JSONObject(params), tag);
+    }
+
+    private void showProgress(boolean isDismiss){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        DialogFragment dialogFragment = new ProgressFragment();
+        if(!isDismiss)
+            dialogFragment.show(ft, "dialog");
+    }
+
+    @Override
+    public void onResponse(JSONObject response, String TAG) {
+
+        switch (TAG){
+            case AppConstants.WebApi.FOLLOW_LEADER:
+                break;
+        }
+
+    }
+
+    @Override
+    public void onError(VolleyError error, String TAG) {
+        switch (TAG){
+            case AppConstants.WebApi.GENERATE_OTP:
+                break;
+            case AppConstants.WebApi.LOGIN:
+                break;
+        }
+    }
 
 }

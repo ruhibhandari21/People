@@ -60,7 +60,7 @@ public class DashboardActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
         PreferencesManager manager = PreferencesManager.getInstance(this);
-        if (manager.getInt(AppConstants.PREF_ROLE) == AppConstants.VOTER) {
+        if (manager.getInt(AppConstants.Preference.PREF_ROLE) == AppConstants.VOTER) {
             menu.findItem(R.id.nav_push).setVisible(false);
             menu.findItem(R.id.nav_report).setVisible(false);
             menu.findItem(R.id.nav_todo).setVisible(false);

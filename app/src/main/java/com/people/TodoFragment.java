@@ -2,7 +2,9 @@ package com.people;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,14 +12,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.people.adapters.ToDoAdapter;
 import com.people.root.DashboardActivity;
+import com.people.utils.AppConstants;
+import com.people.utils.PreferencesManager;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by admin on 5/15/2018.
  */
 
-public class TodoFragment  extends Fragment implements View.OnClickListener {
+public class TodoFragment  extends Fragment implements View.OnClickListener, ApiCalls.ApiCallback {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -81,5 +92,56 @@ public class TodoFragment  extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
+    }
+
+    private void apiCalls(String tag){
+
+        showProgress(false);
+        Map<String, String> params = new HashMap<String, String>();
+        ApiCalls apiCalls = new ApiCalls(this);
+
+        switch (tag){
+
+            case AppConstants.WebApi.GET_HISTORY:
+                params.put("userId", PreferencesManager.getInstance(getActivity()).
+                        getInt(AppConstants.Preference.PREF_USER_ID)+"");
+                params.put("history_type", "");
+                break;
+
+        }
+        apiCalls.initiateRequest(Request.Method.POST, tag,new JSONObject(params), tag);
+    }
+
+    private void showProgress(boolean isDismiss){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        DialogFragment dialogFragment = new ProgressFragment();
+        if(!isDismiss)
+            dialogFragment.show(ft, "dialog");
+    }
+
+    @Override
+    public void onResponse(JSONObject response, String TAG) {
+
+        switch (TAG){
+            case AppConstants.WebApi.GET_HISTORY:
+                break;
+        }
+
+    }
+
+    @Override
+    public void onError(VolleyError error, String TAG) {
+        switch (TAG){
+            case AppConstants.WebApi.GENERATE_OTP:
+                break;
+            case AppConstants.WebApi.LOGIN:
+                break;
+        }
     }
 }
