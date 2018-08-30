@@ -49,16 +49,16 @@ public class RoleSelectionActivity extends AppCompatActivity implements View.OnC
         {
             case R.id.tv_voter:
                 intent = new Intent(RoleSelectionActivity.this, LoginActivity.class);
-                intent.putExtra(AppConstants.PREF_ROLE, AppConstants.VOTER);
+                intent.putExtra(AppConstants.Preference.PREF_ROLE, AppConstants.VOTER);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                manager.putInt(AppConstants.PREF_ROLE,AppConstants.VOTER);
+                manager.putInt(AppConstants.Preference.PREF_ROLE,AppConstants.VOTER);
                 startActivity(intent);
                 finish();
                 break;
             case R.id.tv_leader:
                 intent = new Intent(RoleSelectionActivity.this, LoginActivity.class);
-                intent.putExtra(AppConstants.PREF_ROLE, AppConstants.LEADER);
-                manager.putInt(AppConstants.PREF_ROLE,AppConstants.LEADER);
+                intent.putExtra(AppConstants.Preference.PREF_ROLE, AppConstants.LEADER);
+                manager.putInt(AppConstants.Preference.PREF_ROLE,AppConstants.LEADER);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();

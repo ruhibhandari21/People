@@ -1,7 +1,6 @@
 package com.people.adapters;
 
 import android.content.Context;
-import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +9,7 @@ import android.widget.TextView;
 
 import com.people.R;
 import com.people.root.DashboardActivity;
-
-import java.util.List;
+import com.people.utils.AppConstants;
 
 /**
  * Created by admin on 5/15/2018.
@@ -65,7 +63,7 @@ private Context mContext;
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.VOTERVIEWFEEDBACK,null);
+                ((DashboardActivity)mContext).callSetupFragment(AppConstants.Screens.VOTERVIEWFEEDBACK,null);
             }
         });
     }

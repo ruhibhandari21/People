@@ -1,6 +1,5 @@
 package com.people.root;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -30,18 +29,16 @@ import java.util.Locale;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+
     public FloatingActionButton floatingActionButton;
-    private Context mContext;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
-    private String CURRENTFRAGMENT = "";
     private Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        mContext = this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -57,13 +54,13 @@ public class DashboardActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
         PreferencesManager manager = PreferencesManager.getInstance(this);
-        if (manager.getInt(AppConstants.PREF_ROLE) == AppConstants.VOTER) {
+        if (manager.getInt(AppConstants.Preference.PREF_ROLE) == AppConstants.VOTER) {
             menu.findItem(R.id.nav_push).setVisible(false);
             menu.findItem(R.id.nav_report).setVisible(false);
             menu.findItem(R.id.nav_todo).setVisible(false);
@@ -72,29 +69,9 @@ public class DashboardActivity extends AppCompatActivity
         initUI();
         initListener();
 
-        callSetupFragment(SCREENS.HOME, null);
+        callSetupFragment(AppConstants.Screens.HOME, null);
 
     }
-
-    private void setTitle(String title){
-//        ActionBar toolbar = getSupportActionBar();
-//        toolbar.setTitle(title);
-    }
-
-    public void initUI() {
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
-    }
-
-    public void initListener() {
-        floatingActionButton.setOnClickListener(this);
-        ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.imageView).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
-            }
-        });
-    }
-
 
     @Override
     public void onBackPressed() {
@@ -136,6 +113,66 @@ public class DashboardActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fab:
+                callSetupFragment(AppConstants.Screens.VOTERQUERYRAISING, null);
+                break;
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            callSetupFragment(AppConstants.Screens.HOME, null);
+            // Handle the camera action
+        } else if (id == R.id.nav_search) {
+            callSetupFragment(AppConstants.Screens.VOTERSEARCH, null);
+        } else if (id == R.id.nav_history) {
+            callSetupFragment(AppConstants.Screens.HISTORY, null);
+        } else if (id == R.id.nav_support) {
+            callSetupFragment(AppConstants.Screens.FEEDBACK, null);
+        } else if (id == R.id.nav_share) {
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "this will be a link to download the app from the google play store";
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share app download link");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            startActivity(Intent.createChooser(sharingIntent, "Share via"));
+        } else if (id == R.id.nav_report) {
+            callSetupFragment(AppConstants.Screens.REPORT, null);
+        } else if (id == R.id.nav_todo) {
+            callSetupFragment(AppConstants.Screens.VOTERQUERYRAISING, "todo");
+        } else if (id == R.id.nav_push) {
+            callSetupFragment(AppConstants.Screens.PUSHUPDATES, null);
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    public void initUI() {
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+    }
+
+    public void initListener() {
+        floatingActionButton.setOnClickListener(this);
+        ((NavigationView) findViewById(R.id.nav_view)).
+                getHeaderView(0).findViewById(R.id.imageView).
+                setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this,
+                        ProfileActivity.class));
+            }
+        });
+    }
+
     private void switchLanguage() {
         String lang = "hi";
         Locale current = getResources().getConfiguration().locale;
@@ -147,17 +184,10 @@ public class DashboardActivity extends AppCompatActivity
                 lang = "en_IN";
             }
         }
-//                        Toast.makeText(VendorActivity.this,
-//                                ""+current.getCountry()+" "+current.getDisplayLanguage(), Toast.LENGTH_SHORT).show();
-//                        navItemIndex = 3;
-//                        CURRENT_TAG = TAG_NOTIFICATIONS;
         Resources res = getResources();
-// Change locale settings in the app.
         DisplayMetrics dm = res.getDisplayMetrics();
         android.content.res.Configuration conf = res.getConfiguration();
         conf.locale = new Locale(lang);
-//        conf.setLocale(new Locale(lang)); // API 17+ only.
-// Use conf.locale = new Locale(...) if targeting lower versions
         res.updateConfiguration(conf, dm);
         Intent i = getBaseContext().getPackageManager()
                 .getLaunchIntentForPackage( getBaseContext().getPackageName() );
@@ -165,134 +195,72 @@ public class DashboardActivity extends AppCompatActivity
         startActivity(i);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            callSetupFragment(SCREENS.HOME, null);
-            // Handle the camera action
-        } else if (id == R.id.nav_search) {
-            callSetupFragment(SCREENS.VOTERSEARCH, null);
-        } else if (id == R.id.nav_history) {
-            callSetupFragment(SCREENS.HISTORY, null);
-        } else if (id == R.id.nav_support) {
-            callSetupFragment(SCREENS.FEEDBACK, null);
-        } else if (id == R.id.nav_share) {
-            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-            sharingIntent.setType("text/plain");
-            String shareBody = "this will be a link to download the app from the google play store";
-            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share app download link");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-            startActivity(Intent.createChooser(sharingIntent, "Share via"));
-        } else if (id == R.id.nav_report) {
-            callSetupFragment(SCREENS.REPORT, null);
-        } else if (id == R.id.nav_todo) {
-            callSetupFragment(SCREENS.VOTERQUERYRAISING, "todo");
-        } else if (id == R.id.nav_push) {
-            callSetupFragment(DashboardActivity.SCREENS.PUSHUPDATES, null);
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    public void callSetupFragment(SCREENS screens, Object data) {
+    public void callSetupFragment(int screens, Object data) {
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         if (data == null) data = "";
         switch (screens) {
-            case PUSHUPDATES:
+            case AppConstants.Screens.PUSHUPDATES:
                 setTitle(getString(R.string.push_updates_menu));
                 fragment = PushUpdatesFragment.newInstance("", "");
-                CURRENTFRAGMENT = SCREENS.PUSHUPDATES.toString();
                 break;
 
-            case REQUEST:
+            case AppConstants.Screens.REQUEST:
                 setTitle(getString(R.string.request));
                 fragment = RequestFragment.newInstance(data.toString(), "");
-                CURRENTFRAGMENT = SCREENS.REQUEST.toString();
                 break;
-            case VOTERQUERYRAISING:
+            case AppConstants.Screens.VOTERQUERYRAISING:
                 setTitle(getString(R.string.raise_the_qry));
                 fragment = VoterQueryRaisingFragment.newInstance(data.toString(), "");
-                CURRENTFRAGMENT = SCREENS.VOTERQUERYRAISING.toString();
                 break;
-            case HISTORY:
+            case AppConstants.Screens.HISTORY:
                 setTitle(getString(R.string.history_menu));
                 fragment = HistoryFragment.newInstance("", "");
-                CURRENTFRAGMENT = SCREENS.HISTORY.toString();
                 break;
 
-            case VOTERVIEWFEEDBACK:
+            case AppConstants.Screens.VOTERVIEWFEEDBACK:
                 setTitle(getString(R.string.feedback));
                 fragment = VoterViewFeedbackScreen.newInstance(data.toString(), "");
-                CURRENTFRAGMENT = SCREENS.VOTERVIEWFEEDBACK.toString();
                 break;
 
-            case VOTERSEARCH:
+            case AppConstants.Screens.VOTERSEARCH:
                 setTitle(getString(R.string.search_lead));
                 fragment = VoterSearchFragment.newInstance("", "");
-                CURRENTFRAGMENT = SCREENS.VOTERSEARCH.toString();
                 break;
 
-            case HOME:
+            case AppConstants.Screens.HOME:
                 setTitle(getString(R.string.app_name));
                 fragment = PostFragment.newInstance("", "");
-                CURRENTFRAGMENT = SCREENS.HOME.toString();
                 break;
 
-            case TODO:
+            case AppConstants.Screens.TODO:
                 setTitle(getString(R.string.todo_menu));
                 fragment = TodoFragment.newInstance("", "");
-                CURRENTFRAGMENT = SCREENS.TODO.toString();
                 break;
 
-            case FEEDBACK:
+            case AppConstants.Screens.FEEDBACK:
                 setTitle(getString(R.string.feedback));
                 fragment = BlankFragment.newInstance("", "");
-                CURRENTFRAGMENT = SCREENS.FEEDBACK.toString();
                 break;
 
-            case REPORT:
+            case AppConstants.Screens.REPORT:
                 setTitle(getString(R.string.report_menu));
                 fragment = ReportFragment.newInstance("", "");
-                CURRENTFRAGMENT = SCREENS.REPORT.toString();
                 break;
-            case PRIORITIES:
+            case AppConstants.Screens.PRIORITIES:
                 setTitle(getString(R.string.priorities));
                 fragment = PrioritiesFragment.newInstance("", "");
-                CURRENTFRAGMENT = SCREENS.PRIORITIES.toString();
                 break;
-            case PIECHART:
+            case AppConstants.Screens.PIECHART:
                 setTitle(getString(R.string.statistics));
                 fragment = BarChartFragment.newInstance("", "");
-                CURRENTFRAGMENT = SCREENS.PIECHART.toString();
                 break;
 
         }
 
-        fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
-        fragmentTransaction.addToBackStack(CURRENTFRAGMENT);
+        fragmentTransaction.replace(R.id.inner_frame, fragment, screens+"");
+        fragmentTransaction.addToBackStack(screens+"");
         fragmentTransaction.commit();//AllowingStateLoss();
     }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fab:
-                callSetupFragment(SCREENS.VOTERQUERYRAISING, null);
-                break;
-        }
-    }
-
-
-    public enum SCREENS {
-        REPORT, PIECHART, PRIORITIES, HOME, PUSHUPDATES, REQUEST, VOTERQUERYRAISING, HISTORY, VOTERVIEWFEEDBACK, VOTERSEARCH, TODO, FEEDBACK
-    }
-
 
 }

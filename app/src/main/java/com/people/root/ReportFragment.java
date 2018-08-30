@@ -3,6 +3,7 @@ package com.people.root;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,13 +13,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 //
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.people.ApiCalls;
+import com.people.ProgressFragment;
 import com.people.R;
+import com.people.utils.AppConstants;
+import com.people.utils.PreferencesManager;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by admin on 5/15/2018.
  */
 
-public class ReportFragment extends Fragment implements View.OnClickListener {
+public class ReportFragment extends Fragment implements View.OnClickListener, ApiCalls.ApiCallback {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -86,21 +98,68 @@ public class ReportFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_prorities:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.PRIORITIES,null);
+                ((DashboardActivity)mContext).callSetupFragment(AppConstants.Screens.PRIORITIES,null);
                 break;
             case R.id.tv_statistics:
-                ((DashboardActivity)mContext).callSetupFragment(DashboardActivity.SCREENS.PIECHART,null);
+                ((DashboardActivity)mContext).callSetupFragment(AppConstants.Screens.PIECHART,null);
                 break;
             case R.id.btn_back:
                 FragmentManager fragmentManager = ((DashboardActivity)mContext).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 PostFragment fragment = PostFragment.newInstance("", "");
-                String  CURRENTFRAGMENT = DashboardActivity.SCREENS.HOME.toString();
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
+                fragmentTransaction.replace(R.id.inner_frame, fragment, AppConstants.Screens.HOME+"");
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
 
+        }
+    }
+
+    private void apiCalls(String tag){
+
+        showProgress(false);
+        Map<String, String> params = new HashMap<String, String>();
+        ApiCalls apiCalls = new ApiCalls(this);
+
+        switch (tag){
+
+            case AppConstants.WebApi.GET_REPORT:
+                params.put("userId", PreferencesManager.getInstance(getActivity()).
+                        getInt(AppConstants.Preference.PREF_USER_ID)+"");
+                break;
+
+        }
+        apiCalls.initiateRequest(Request.Method.POST, tag,new JSONObject(params), tag);
+    }
+
+    private void showProgress(boolean isDismiss){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        DialogFragment dialogFragment = new ProgressFragment();
+        if(!isDismiss)
+            dialogFragment.show(ft, "dialog");
+    }
+
+    @Override
+    public void onResponse(JSONObject response, String TAG) {
+
+        switch (TAG){
+            case AppConstants.WebApi.GET_REPORT:
+                break;
+        }
+
+    }
+
+    @Override
+    public void onError(VolleyError error, String TAG) {
+        switch (TAG){
+            case AppConstants.WebApi.GET_REPORT:
+                break;
         }
     }
 }

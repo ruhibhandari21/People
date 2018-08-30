@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.people.R;
+import com.people.utils.AppConstants;
 
 /**
  * Created by admin on 5/15/2018.
@@ -53,7 +54,7 @@ public class VoterViewFeedbackScreen extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:
-                ((DashboardActivity) mContext).callSetupFragment(DashboardActivity.SCREENS.HISTORY, null);
+                ((DashboardActivity) mContext).callSetupFragment(AppConstants.Screens.HISTORY, null);
                 break;
         }
     }

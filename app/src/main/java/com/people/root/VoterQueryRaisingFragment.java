@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.people.R;
+import com.people.utils.AppConstants;
 
 /**
  * Created by admin on 5/15/2018.
@@ -46,9 +47,9 @@ public class VoterQueryRaisingFragment extends Fragment implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        DashboardActivity.SCREENS screens = DashboardActivity.SCREENS.REQUEST;
+        int screens = AppConstants.Screens.REQUEST;
         if(!mParam1.equals("")){
-            screens = DashboardActivity.SCREENS.TODO;
+            screens = AppConstants.Screens.TODO;
         }
         switch (v.getId()) {
             case R.id.tv_request:
@@ -67,9 +68,8 @@ public class VoterQueryRaisingFragment extends Fragment implements View.OnClickL
                 FragmentManager fragmentManager = ((DashboardActivity)mContext).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 PostFragment fragment = PostFragment.newInstance("", "");
-                String  CURRENTFRAGMENT = DashboardActivity.SCREENS.HOME.toString();
                 fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                fragmentTransaction.replace(R.id.inner_frame, fragment, CURRENTFRAGMENT);
+                fragmentTransaction.replace(R.id.inner_frame, fragment, AppConstants.Screens.HOME+"");
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
         }
