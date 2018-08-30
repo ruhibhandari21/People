@@ -9,7 +9,7 @@ public class AppConstants {
     public static final int PICKFILE_RESULT_CODE = 1;
 
     //live
-    public static String LOCAL_URL = "http://192.168.0.191/peopleapp/index.php/Api/";
+    public static String LOCAL_URL = "http://192.168.0.192/peopleapp/index.php/Api/";
     public static String BASE_URL=LOCAL_URL;
 
     //methods
