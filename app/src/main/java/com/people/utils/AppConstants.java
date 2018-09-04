@@ -17,7 +17,7 @@ public class AppConstants {
 
     public static abstract class WebApi{
         //live
-        private final static String LOCAL_URL = "http://192.168.0.191/peopleapp/index.php/Api/";
+        private final static String LOCAL_URL = "http://192.168.0.192/peopleapp/index.php/Api/";
         private final static String BASE_URL=LOCAL_URL;
 
         //methods
