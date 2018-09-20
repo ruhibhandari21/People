@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.people"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,25 +20,25 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.journeyapps:zxing-android-embedded:3.3.0'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.google.android.gms:play-services-appindexing:9.8.0'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:cardview-v7:25.3.1'
-    compile 'com.squareup.okhttp3:okhttp:3.8.0'
-    compile 'org.igniterealtime.smack:smack-android:4.2.0-beta2'
-    compile 'org.igniterealtime.smack:smack-tcp:4.2.0-beta2'
-    compile 'org.igniterealtime.smack:smack-im:4.2.0-beta2'
-    compile 'org.igniterealtime.smack:smack-extensions:4.2.0-beta2'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'com.github.faranjit:currency-edittext:1.0.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
-    testCompile 'junit:junit:4.12'
-    compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
+    implementation 'com.journeyapps:zxing-android-embedded:3.3.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.google.firebase:firebase-appindexing:10.2.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+    implementation 'org.igniterealtime.smack:smack-android:4.2.0-beta2'
+    implementation 'org.igniterealtime.smack:smack-tcp:4.2.0-beta2'
+    implementation 'org.igniterealtime.smack:smack-im:4.2.0-beta2'
+    implementation 'org.igniterealtime.smack:smack-extensions:4.2.0-beta2'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.github.faranjit:currency-edittext:1.0.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    testImplementation 'junit:junit:4.12'
+    implementation 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
 }
